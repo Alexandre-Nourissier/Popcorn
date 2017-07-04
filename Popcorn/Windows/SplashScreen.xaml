@@ -20,9 +20,9 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <wpf:LoadingIndicator Style="{DynamicResource LoadingIndicatorArcsStyle}">
+        <wpf:LoadingIndicator Style="{DynamicResource LoadingIndicatorArcsStyle}" Margin="277,194,451,301.2">
             <wpf:LoadingIndicator.RenderTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
+                <ScaleTransform ScaleX="6" ScaleY="4" />
             </wpf:LoadingIndicator.RenderTransform>
         </wpf:LoadingIndicator>
     </Grid>
