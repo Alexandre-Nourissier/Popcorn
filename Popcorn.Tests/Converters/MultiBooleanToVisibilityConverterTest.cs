@@ -39,7 +39,6 @@ namespace Popcorn.Tests.Converters
                 _converter.Convert(notAllTrueBooleans, null, "AND", null), Visibility.Collapsed);
         }
 
-
         [Test]
         public void Convert_OrAllTrue_ReturnsVisible()
         {

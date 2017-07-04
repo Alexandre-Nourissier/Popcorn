@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Popcorn.ColorPicker.ColorModels;
+using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
@@ -6,8 +8,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Popcorn.ColorPicker.ColorModels;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker
 {
@@ -16,7 +16,6 @@ namespace Popcorn.ColorPicker
     /// </summary>
     public partial class ColorSelector : UserControl
     {
-
         public enum ESelectionRingMode
         {
             white,
@@ -30,7 +29,6 @@ namespace Popcorn.ColorPicker
             ColorPropertySet,
             MouseDown,
             SliderMove,
-
         }
 
         public event EventHandler<EventArgs<Color>> ColorChanged;
@@ -39,8 +37,6 @@ namespace Popcorn.ColorPicker
 
         private EColorChangeSource mColorChangeSource = EColorChangeSource.ColorPropertySet;
         private readonly TranslateTransform selectionTransform = new TranslateTransform();
-
-
 
         private readonly WriteableBitmap mSelectionPane =
             new WriteableBitmap(256, 256, 96, 96, PixelFormats.Bgr24, null);
@@ -55,8 +51,6 @@ namespace Popcorn.ColorPicker
         public ColorSelector()
         {
             InitializeComponent();
-
-
 
             NormalComponent = new ColorModels.RGB.Red();
             colorPlane.Source = mSelectionPane;
@@ -77,19 +71,17 @@ namespace Popcorn.ColorPicker
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
-
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-
-            var c = (Color) e.NewValue;
-            var oldC = (Color) e.OldValue;
+            var c = (Color)e.NewValue;
+            var oldC = (Color)e.OldValue;
             if (c != oldC)
             {
-                var cs = (ColorSelector) d;
+                var cs = (ColorSelector)d;
                 cs.OnColorChanged(c);
             }
         }
@@ -103,14 +95,12 @@ namespace Popcorn.ColorPicker
                 selectionTransform.X = SelectionPoint.X - (mSelectionPane.PixelWidth / 2.0);
                 selectionTransform.Y = SelectionPoint.Y - (mSelectionPane.PixelHeight / 2.0);
 
-
                 sNormal.Value = NormalComponent.Value(color);
 
                 if (!NormalComponent.IsNormalIndependantOfColor)
                 {
                     NormalComponent.UpdateNormalBitmap(mNormalPane, color);
                 }
-
             }
 
             if (SelectionRingMode == ESelectionRingMode.BlackOrWhite)
@@ -135,8 +125,8 @@ namespace Popcorn.ColorPicker
             }
             ;
         }
-        
-        #endregion
+
+        #endregion Color
 
         #region NormalComponent
 
@@ -149,7 +139,7 @@ namespace Popcorn.ColorPicker
         [Category("ColorPicker")]
         public NormalComponent NormalComponent
         {
-            get { return (NormalComponent) GetValue(NormalComponentProperty); }
+            get { return (NormalComponent)GetValue(NormalComponentProperty); }
             set { SetValue(NormalComponentProperty, value); }
         }
 
@@ -157,8 +147,8 @@ namespace Popcorn.ColorPicker
         {
             try
             {
-                var cc = (NormalComponent) e.NewValue;
-                var cs = (ColorSelector) d;
+                var cc = (NormalComponent)e.NewValue;
+                var cs = (ColorSelector)d;
                 cs.OnNormalComponentChanged(cc);
             }
             catch (Exception ex)
@@ -169,7 +159,6 @@ namespace Popcorn.ColorPicker
 
         private void OnNormalComponentChanged(NormalComponent cc)
         {
-
             SelectionPoint = cc.PointFromColor(Color);
             selectionTransform.X = SelectionPoint.X - (colorPlane.ActualWidth / 2);
             selectionTransform.Y = SelectionPoint.Y - (colorPlane.ActualHeight / 2);
@@ -180,11 +169,9 @@ namespace Popcorn.ColorPicker
             ProcessSliderEvents = true;
             cc.UpdateNormalBitmap(mNormalPane, Color);
             cc.UpdateColorPlaneBitmap(mSelectionPane, cc.Value(Color));
-
         }
 
-
-        #endregion
+        #endregion NormalComponent
 
         #region SelectionRingMode
 
@@ -195,14 +182,14 @@ namespace Popcorn.ColorPicker
         [Category("ColorPicker")]
         public ESelectionRingMode SelectionRingMode
         {
-            get { return (ESelectionRingMode) GetValue(SelectionRingModeProperty); }
+            get { return (ESelectionRingMode)GetValue(SelectionRingModeProperty); }
             set { SetValue(SelectionRingModeProperty, value); }
         }
 
         private static void OnSelectionRingModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var colorSelector = (ColorSelector) d;
-            var selectionRingMode = (ESelectionRingMode) e.NewValue;
+            var colorSelector = (ColorSelector)d;
+            var selectionRingMode = (ESelectionRingMode)e.NewValue;
             colorSelector.OnSelectionRingModeChanged(selectionRingMode);
         }
 
@@ -214,14 +201,17 @@ namespace Popcorn.ColorPicker
                     selectionEllipse.Stroke = new SolidColorBrush(Colors.Black);
                     selectionOuterEllipse.Visibility = Visibility.Collapsed;
                     break;
+
                 case ESelectionRingMode.white:
                     selectionEllipse.Stroke = new SolidColorBrush(Colors.White);
                     selectionOuterEllipse.Visibility = Visibility.Collapsed;
                     break;
+
                 case ESelectionRingMode.BlackAndWhite:
                     selectionEllipse.Stroke = new SolidColorBrush(Colors.White);
                     selectionOuterEllipse.Visibility = Visibility.Visible;
                     break;
+
                 case ESelectionRingMode.BlackOrWhite:
                     AdjustSelectionRing(Color);
 
@@ -230,21 +220,17 @@ namespace Popcorn.ColorPicker
             }
         }
 
-        #endregion
-
+        #endregion SelectionRingMode
 
         #region Event Handlers
 
-        void colorPlane_MouseDown(object sender, MouseButtonEventArgs e)
+        private void colorPlane_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
             mColorChangeSource = EColorChangeSource.MouseDown;
 
-            ProcessMousedown(e.GetPosition((IInputElement) sender));
-
+            ProcessMousedown(e.GetPosition((IInputElement)sender));
 
             mColorChangeSource = EColorChangeSource.ColorPropertySet;
-
         }
 
         private void ProcessMousedown(Point selectionPoint)
@@ -252,29 +238,25 @@ namespace Popcorn.ColorPicker
             SelectionPoint = selectionPoint;
             selectionTransform.X = SelectionPoint.X - (colorPlane.ActualWidth / 2);
             selectionTransform.Y = SelectionPoint.Y - (colorPlane.ActualHeight / 2);
-            var newColor = NormalComponent.ColorAtPoint(SelectionPoint, (int) sNormal.Value);
+            var newColor = NormalComponent.ColorAtPoint(SelectionPoint, (int)sNormal.Value);
             if (!NormalComponent.IsNormalIndependantOfColor)
             {
                 NormalComponent.UpdateNormalBitmap(mNormalPane, newColor);
             }
             Color = newColor;
-
         }
-
 
         private void sNormal_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
             mColorChangeSource = EColorChangeSource.SliderMove;
             if (ProcessSliderEvents)
             {
                 ProcessSliderEvents = false;
-                Color = NormalComponent.ColorAtPoint(SelectionPoint, (int) e.NewValue);
+                Color = NormalComponent.ColorAtPoint(SelectionPoint, (int)e.NewValue);
                 UpdateColorPlaneBitmap(NormalComponent.Value(Color));
                 ProcessSliderEvents = true;
             }
             mColorChangeSource = EColorChangeSource.ColorPropertySet;
-
         }
 
         private void colorPlane_MouseMove(object sender, MouseEventArgs e)
@@ -283,38 +265,34 @@ namespace Popcorn.ColorPicker
 
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                var point = e.GetPosition((IInputElement) sender);
+                var point = e.GetPosition((IInputElement)sender);
                 if (point.X != 256 && point.Y != 256) //Avoids problem that occurs when dragging to edge of colorPane
                 {
-
                     ProcessMousedown(point);
                 }
             }
-
 
             mColorChangeSource = EColorChangeSource.ColorPropertySet;
         }
 
         private void normalColorImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var yPos = (e.GetPosition((IInputElement) sender)).Y;
+            var yPos = (e.GetPosition((IInputElement)sender)).Y;
             var proportion = 1 - yPos / 255;
             var componentRange = NormalComponent.MaxValue - NormalComponent.MinValue;
 
             var normalValue = NormalComponent.MinValue + proportion * componentRange;
 
             sNormal.Value = normalValue;
-
         }
 
-        #endregion
+        #endregion Event Handlers
 
         private int lastColorComponentValue = -1;
         private string lastComponentName = "";
 
         private void UpdateColorPlaneBitmap(int colorComponentValue)
         {
-
             if (lastColorComponentValue != colorComponentValue || lastComponentName != NormalComponent.Name)
             {
                 NormalComponent.UpdateColorPlaneBitmap(mSelectionPane, colorComponentValue);
@@ -322,9 +300,9 @@ namespace Popcorn.ColorPicker
                 lastComponentName = NormalComponent.Name;
             }
         }
-        
+
         private Point SelectionPoint { get; set; }
-        
+
         public void IncrementNormalSlider()
         {
             sNormal.Value++;
@@ -334,14 +312,13 @@ namespace Popcorn.ColorPicker
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                var yPos = (e.GetPosition((IInputElement) sender)).Y;
+                var yPos = (e.GetPosition((IInputElement)sender)).Y;
                 var proportion = 1 - yPos / 255;
                 var componentRange = NormalComponent.MaxValue - NormalComponent.MinValue;
 
                 var normalValue = NormalComponent.MinValue + proportion * componentRange;
 
                 sNormal.Value = normalValue;
-
             }
         }
     }

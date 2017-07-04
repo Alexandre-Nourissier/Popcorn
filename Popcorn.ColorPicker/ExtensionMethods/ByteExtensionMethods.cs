@@ -6,7 +6,7 @@ namespace Popcorn.ColorPicker.ExtensionMethods
     {
         public static int AsPercent(this byte number)
         {
-            return Convert.ToInt32((double) number / 255 * 100);
+            return Convert.ToInt32((double)number / 255 * 100);
         }
     }
 }

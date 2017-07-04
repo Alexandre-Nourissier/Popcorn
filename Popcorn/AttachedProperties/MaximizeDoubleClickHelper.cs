@@ -30,7 +30,6 @@ namespace Popcorn.AttachedProperties
             {
                 uiElement.MouseLeftButtonDown -= UIElementMouseLeftButtonDown;
             }
-
         }
 
         private static void UIElementMouseLeftButtonDown(object sender, MouseButtonEventArgs mouseEventArgs)

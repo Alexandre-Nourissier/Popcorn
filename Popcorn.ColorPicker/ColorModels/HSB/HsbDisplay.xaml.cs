@@ -34,14 +34,14 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var c = (Color) e.NewValue;
-            var rd = (HsbDisplay) d;
+            var c = (Color)e.NewValue;
+            var rd = (HsbDisplay)d;
             rd.OnColorChanged(c);
         }
 
@@ -57,7 +57,7 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             }
         }
 
-        #endregion
+        #endregion Color
 
         #region NormalComponent
 
@@ -69,7 +69,7 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
         [Category("ColorPicker")]
         public NormalComponent NormalComponent
         {
-            get { return (NormalComponent) GetValue(NormalComponentProperty); }
+            get { return (NormalComponent)GetValue(NormalComponentProperty); }
             set { SetValue(NormalComponentProperty, value); }
         }
 
@@ -77,9 +77,9 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
         {
             try
             {
-                var cp = (NormalComponent) e.NewValue;
+                var cp = (NormalComponent)e.NewValue;
 
-                var rd = (HsbDisplay) d;
+                var rd = (HsbDisplay)d;
                 rd.OnColorComponentChanged(cp);
             }
             catch
@@ -89,7 +89,6 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
 
         private void OnColorComponentChanged(NormalComponent colorPlaneColorComponent)
         {
-
             if (colorPlaneColorComponent.Name == "HSB_Hue")
             {
                 rH.IsChecked = true;
@@ -113,27 +112,21 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             {
                 ColorComponentChanged(this, new EventArgs<NormalComponent>(colorPlaneColorComponent));
             }
-
-
-
         }
 
-        #endregion
+        #endregion NormalComponent
 
         public event EventHandler<EventArgs<Color>> ColorChanged;
-
 
         public HsbDisplay()
         {
             InitializeComponent();
         }
 
-
         private void txtR_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = NumbersOnly(e.Text);
             base.OnPreviewTextInput(e);
-
         }
 
         private bool NumbersOnly(string text)
@@ -141,7 +134,6 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             String okChars = "0123456789";
             return text.ToCharArray().All(c => okChars.IndexOf(c) == -1);
         }
-
 
         private void TextChanged(object sender, TextChangedEventArgs e)
         {

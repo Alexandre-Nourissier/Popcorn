@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Popcorn.ColorPicker;
+using Popcorn.ColorPickerControls.Dialogs;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Popcorn.ColorPickerControls.Dialogs;
-using Popcorn.ColorPicker;
 
 namespace Popcorn.ColorPickerControls.Chips
 {
@@ -22,8 +22,11 @@ namespace Popcorn.ColorPickerControls.Chips
         }
 
         public event EventHandler<EventArgs<Color>> ForegroundColorChanged;
+
         public event EventHandler<EventArgs<SolidColorBrush>> ForegroundBrushChanged;
+
         public event EventHandler<EventArgs<Color>> BackgroundColorChanged;
+
         public event EventHandler<EventArgs<SolidColorBrush>> BackgroundBrushChanged;
 
         public static Type ClassType
@@ -39,17 +42,17 @@ namespace Popcorn.ColorPickerControls.Chips
         [Category("ColorPicker")]
         public Color DefaultForeground
         {
-            get { return (Color) GetValue(DefaultForegroundProperty); }
+            get { return (Color)GetValue(DefaultForegroundProperty); }
             set { SetValue(DefaultForegroundProperty, value); }
         }
 
         private static void OnDefaultForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ForegroundBackgroundChip) d;
-            chip.rForegroundDefault.Fill = new SolidColorBrush((Color) e.NewValue);
+            var chip = (ForegroundBackgroundChip)d;
+            chip.rForegroundDefault.Fill = new SolidColorBrush((Color)e.NewValue);
         }
 
-        #endregion
+        #endregion DefaultForeground
 
         #region DefaultBackground
 
@@ -60,17 +63,17 @@ namespace Popcorn.ColorPickerControls.Chips
         [Category("ColorPicker")]
         public Color DefaultBackground
         {
-            get { return (Color) GetValue(DefaultBackgroundProperty); }
+            get { return (Color)GetValue(DefaultBackgroundProperty); }
             set { SetValue(DefaultBackgroundProperty, value); }
         }
 
         private static void OnDefaultBackgroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ForegroundBackgroundChip) d;
-            chip.rBackgroundDefault.Fill = new SolidColorBrush((Color) e.NewValue);
+            var chip = (ForegroundBackgroundChip)d;
+            chip.rBackgroundDefault.Fill = new SolidColorBrush((Color)e.NewValue);
         }
 
-        #endregion
+        #endregion DefaultBackground
 
         #region ForegroundColor
 
@@ -80,14 +83,14 @@ namespace Popcorn.ColorPickerControls.Chips
         [Category("ColorPicker")]
         public Color ForegroundColor
         {
-            get { return (Color) GetValue(ForegroundColorProperty); }
+            get { return (Color)GetValue(ForegroundColorProperty); }
             set { SetValue(ForegroundColorProperty, value); }
         }
 
         private static void OnForegroundColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ForegroundBackgroundChip) d;
-            chip.foreChip.Color = (Color) e.NewValue;
+            var chip = (ForegroundBackgroundChip)d;
+            chip.foreChip.Color = (Color)e.NewValue;
             chip.ForegroundBrush = new SolidColorBrush(chip.foreChip.Color);
             if (chip.ForegroundColorChanged != null)
             {
@@ -95,7 +98,7 @@ namespace Popcorn.ColorPickerControls.Chips
             }
         }
 
-        #endregion
+        #endregion ForegroundColor
 
         #region BackgroundColor
 
@@ -105,14 +108,14 @@ namespace Popcorn.ColorPickerControls.Chips
         [Category("ColorPicker")]
         public Color BackgroundColor
         {
-            get { return (Color) GetValue(BackgroundColorProperty); }
+            get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
 
         private static void OnBackgroundColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ForegroundBackgroundChip) d;
-            chip.backChip.Color = (Color) e.NewValue;
+            var chip = (ForegroundBackgroundChip)d;
+            chip.backChip.Color = (Color)e.NewValue;
             chip.BackgroundBrush = new SolidColorBrush(chip.backChip.Color);
             if (chip.BackgroundColorChanged != null)
             {
@@ -120,7 +123,7 @@ namespace Popcorn.ColorPickerControls.Chips
             }
         }
 
-        #endregion
+        #endregion BackgroundColor
 
         #region BackgroundBrush
 
@@ -130,21 +133,20 @@ namespace Popcorn.ColorPickerControls.Chips
 
         public SolidColorBrush BackgroundBrush
         {
-            get { return (SolidColorBrush) GetValue(BackgroundBrushProperty); }
+            get { return (SolidColorBrush)GetValue(BackgroundBrushProperty); }
             set { SetValue(BackgroundBrushProperty, value); }
         }
 
         private static void OnBackgroundBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ForegroundBackgroundChip) d;
+            var chip = (ForegroundBackgroundChip)d;
             if (chip.BackgroundBrushChanged != null)
             {
                 chip.BackgroundBrushChanged(chip, new EventArgs<SolidColorBrush>(chip.backChip.Brush));
             }
-
         }
 
-        #endregion
+        #endregion BackgroundBrush
 
         #region ForegroundBrush
 
@@ -155,20 +157,20 @@ namespace Popcorn.ColorPickerControls.Chips
         [Category("ColorPicker")]
         public SolidColorBrush ForegroundBrush
         {
-            get { return (SolidColorBrush) GetValue(ForegroundBrushProperty); }
+            get { return (SolidColorBrush)GetValue(ForegroundBrushProperty); }
             set { SetValue(ForegroundBrushProperty, value); }
         }
 
         private static void OnForegroundBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ForegroundBackgroundChip) d;
+            var chip = (ForegroundBackgroundChip)d;
             if (chip.ForegroundBrushChanged != null)
             {
                 chip.ForegroundBrushChanged(chip, new EventArgs<SolidColorBrush>(chip.foreChip.Brush));
             }
         }
 
-        #endregion
+        #endregion ForegroundBrush
 
         private EColorDialog mColorDialog = EColorDialog.Full;
 

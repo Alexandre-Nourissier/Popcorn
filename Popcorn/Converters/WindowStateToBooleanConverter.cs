@@ -9,7 +9,7 @@ namespace Popcorn.Converters
     /// <summary>
     /// Used to convert a window state to a boolean
     /// </summary>
-    [ValueConversion(typeof (WindowState), typeof (bool))]
+    [ValueConversion(typeof(WindowState), typeof(bool))]
     public class WindowStateToBooleanConverter : MarkupExtension, IValueConverter
     {
         private WindowStateToBooleanConverter _instance;
@@ -25,7 +25,7 @@ namespace Popcorn.Converters
         public object Convert(object value, Type targetType, object parameter,
             CultureInfo culture)
         {
-            var isFullscreen = (bool) value;
+            var isFullscreen = (bool)value;
             return isFullscreen ? WindowState.Maximized : WindowState.Normal;
         }
 
@@ -39,7 +39,7 @@ namespace Popcorn.Converters
         public object ConvertBack(object value, Type targetType, object parameter,
             CultureInfo culture)
         {
-            var windowState = (WindowState) value;
+            var windowState = (WindowState)value;
             return windowState != WindowState.Minimized && windowState != WindowState.Normal;
         }
 

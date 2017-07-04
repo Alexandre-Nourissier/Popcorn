@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Popcorn.ColorPicker.ExtensionMethods;
-
-namespace Popcorn.ColorPicker.ColorModels.CMY
+﻿namespace Popcorn.ColorPicker.ColorModels.CMY
 {
-    class Yellow : ColorComponent
+    internal class Yellow : ColorComponent
     {
         public static CMYModel sModel = new CMYModel();
 
@@ -22,7 +16,7 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
 
         public override int Value(System.Windows.Media.Color color)
         {
-            return (int) sModel.YComponent(color);
+            return (int)sModel.YComponent(color);
         }
 
         public override string Name

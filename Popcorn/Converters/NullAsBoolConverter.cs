@@ -7,7 +7,7 @@ namespace Popcorn.Converters
     /// <summary>
     /// Convert a boolean to null if true
     /// </summary>
-    [ValueConversion(typeof (object), typeof (bool))]
+    [ValueConversion(typeof(object), typeof(bool))]
     public class NullAsBoolConverter : IValueConverter
     {
         /// <summary>

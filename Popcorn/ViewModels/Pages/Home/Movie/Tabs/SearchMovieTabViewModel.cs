@@ -1,14 +1,14 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using NuGet;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Services.Application;
 using Popcorn.Services.Movies.Movie;
 using Popcorn.Services.User;
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Movie.Tabs
 {

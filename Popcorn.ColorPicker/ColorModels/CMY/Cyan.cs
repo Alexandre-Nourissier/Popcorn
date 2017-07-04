@@ -1,9 +1,6 @@
-﻿using Popcorn.ColorPicker.ColorModels.CMYK;
-using Popcorn.ColorPicker.ExtensionMethods;
-
-namespace Popcorn.ColorPicker.ColorModels.CMY
+﻿namespace Popcorn.ColorPicker.ColorModels.CMY
 {
-    class Cyan : ColorComponent
+    internal class Cyan : ColorComponent
     {
         public static CMYModel sModel = new CMYModel();
 
@@ -17,10 +14,9 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
             get { return 100; }
         }
 
-
         public override int Value(System.Windows.Media.Color color)
         {
-            return (int) sModel.CComponent(color);
+            return (int)sModel.CComponent(color);
         }
 
         public override string Name

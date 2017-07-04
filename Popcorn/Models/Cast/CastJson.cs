@@ -30,7 +30,7 @@ namespace Popcorn.Models.Cast
             get => _smallImage;
             set { Set(() => SmallImage, ref _smallImage, value); }
         }
-        
+
         [DeserializeAs(Name = "imdb_code")]
         public string ImdbCode
         {

@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Popcorn.Controls;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Popcorn.Controls;
 
 namespace Popcorn.UserControls.Home.Movie.Details
 {
@@ -21,7 +19,7 @@ namespace Popcorn.UserControls.Home.Movie.Details
 
         private void OnPreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
-            var scv = (AnimatedScrollViewer) sender;
+            var scv = (AnimatedScrollViewer)sender;
             if (scv.ComputedVerticalScrollBarVisibility == Visibility.Visible)
                 return;
 

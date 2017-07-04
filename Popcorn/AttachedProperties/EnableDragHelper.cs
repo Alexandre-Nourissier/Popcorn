@@ -23,7 +23,7 @@ namespace Popcorn.AttachedProperties
             {
                 return;
             }
-            if ((bool) dependencyPropertyChangedEventArgs.NewValue)
+            if ((bool)dependencyPropertyChangedEventArgs.NewValue)
             {
                 uiElement.MouseMove += UiElementOnMouseMove;
             }
@@ -31,7 +31,6 @@ namespace Popcorn.AttachedProperties
             {
                 uiElement.MouseMove -= UiElementOnMouseMove;
             }
-
         }
 
         private static void UiElementOnMouseMove(object sender, MouseEventArgs mouseEventArgs)
@@ -64,7 +63,7 @@ namespace Popcorn.AttachedProperties
 
         public static bool GetEnableDrag(DependencyObject element)
         {
-            return (bool) element.GetValue(EnableDragProperty);
+            return (bool)element.GetValue(EnableDragProperty);
         }
     }
 }

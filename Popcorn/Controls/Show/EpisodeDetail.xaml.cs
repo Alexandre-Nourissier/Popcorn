@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using GalaSoft.MvvmLight.CommandWpf;
+﻿using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
@@ -21,6 +10,17 @@ using Popcorn.Models.Episode;
 using Popcorn.Models.Subtitles;
 using Popcorn.Services.Subtitles;
 using Popcorn.ViewModels.Windows.Settings;
+using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Globalization;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Popcorn.Controls.Show
 {
@@ -176,7 +176,7 @@ namespace Popcorn.Controls.Show
         /// </summary>
         public EpisodeShowJson Episode
         {
-            get => (EpisodeShowJson) GetValue(EpisodeProperty);
+            get => (EpisodeShowJson)GetValue(EpisodeProperty);
             set => SetValue(EpisodeProperty, value);
         }
 

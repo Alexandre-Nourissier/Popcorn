@@ -1430,5 +1430,4 @@
     <Style BasedOn="{StaticResource AccordionItemStyle}" TargetType="layoutToolkit:AccordionItem" />
     <Style BasedOn="{StaticResource AccordionStyle}" TargetType="layoutToolkit:Accordion" />
     <Style BasedOn="{StaticResource AutoCompleteBoxStyle}" TargetType="{x:Type inputToolkit:AutoCompleteBox}" />
-
 </ResourceDictionary>

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Popcorn.Models.Genres;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Popcorn.Models.Genres;
 
 namespace Popcorn.Services.Genres
 {

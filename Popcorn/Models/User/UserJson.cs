@@ -1,6 +1,6 @@
-﻿using System;
+﻿using RestSharp.Deserializers;
+using System;
 using System.Collections.Generic;
-using RestSharp.Deserializers;
 
 namespace Popcorn.Models.User
 {

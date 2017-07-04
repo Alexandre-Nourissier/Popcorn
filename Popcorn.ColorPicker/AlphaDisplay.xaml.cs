@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -38,14 +37,14 @@ namespace Popcorn.ColorPicker
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var color = (Color) e.NewValue;
-            var rd = (AlphaDisplay) d;
+            var color = (Color)e.NewValue;
+            var rd = (AlphaDisplay)d;
             rd.OnColorChanged(color);
         }
 
@@ -55,16 +54,16 @@ namespace Popcorn.ColorPicker
             {
                 mTransparencyBitmap.Lock();
                 int currentPixel = -1;
-                byte* pStart = (byte*) (void*) mTransparencyBitmap.BackBuffer;
+                byte* pStart = (byte*)(void*)mTransparencyBitmap.BackBuffer;
                 for (int iRow = 0; iRow < mTransparencyBitmap.PixelHeight; iRow++)
                 {
                     for (int iCol = 0; iCol < mTransparencyBitmap.PixelWidth; iCol++)
                     {
                         currentPixel++;
                         *(pStart + currentPixel * 4 + 0) = color.B; //Blue
-                        *(pStart + currentPixel * 4 + 1) = color.G; //Green 
+                        *(pStart + currentPixel * 4 + 1) = color.G; //Green
                         *(pStart + currentPixel * 4 + 2) = color.R; //red
-                        *(pStart + currentPixel * 4 + 3) = (byte) (255 - iRow); //alpha
+                        *(pStart + currentPixel * 4 + 3) = (byte)(255 - iRow); //alpha
                     }
                 }
 
@@ -72,34 +71,32 @@ namespace Popcorn.ColorPicker
                     new Int32Rect(0, 0, mTransparencyBitmap.PixelWidth, mTransparencyBitmap.PixelHeight));
                 mTransparencyBitmap.Unlock();
             }
-
-
         }
 
-        #endregion
+        #endregion Color
 
         #region Alpha
 
         public static DependencyProperty AlphaProperty = DependencyProperty.Register("Alpha", typeof(byte), ClassType,
-            new PropertyMetadata((byte) 255, new PropertyChangedCallback(OnAlphaChanged)));
+            new PropertyMetadata((byte)255, new PropertyChangedCallback(OnAlphaChanged)));
 
         public byte Alpha
         {
-            get { return (byte) GetValue(AlphaProperty); }
+            get { return (byte)GetValue(AlphaProperty); }
             set { SetValue(AlphaProperty, value); }
         }
 
         private static void OnAlphaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var display = (AlphaDisplay) d;
-            display.sAlpha.Value = (byte) e.NewValue / 2.55;
+            var display = (AlphaDisplay)d;
+            display.sAlpha.Value = (byte)e.NewValue / 2.55;
             if (display.AlphaChanged != null)
             {
                 display.AlphaChanged(display, new EventArgs<byte>(display.Alpha));
             }
         }
 
-        #endregion
+        #endregion Alpha
 
         private void sAlpha_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -108,17 +105,16 @@ namespace Popcorn.ColorPicker
 
         private void imgTransparency_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var alphaPercent = 100 * (imgTransparency.ActualHeight - (e.GetPosition((IInputElement) sender)).Y) /
+            var alphaPercent = 100 * (imgTransparency.ActualHeight - (e.GetPosition((IInputElement)sender)).Y) /
                                imgTransparency.ActualHeight;
             sAlpha.Value = alphaPercent;
-
         }
 
         private void imgTransparency_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                var alphaPercent = 100 * (imgTransparency.ActualHeight - (e.GetPosition((IInputElement) sender)).Y) /
+                var alphaPercent = 100 * (imgTransparency.ActualHeight - (e.GetPosition((IInputElement)sender)).Y) /
                                    imgTransparency.ActualHeight;
                 sAlpha.Value = alphaPercent;
             }

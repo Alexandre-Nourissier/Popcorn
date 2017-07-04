@@ -12,7 +12,7 @@
             <!--<Style TargetType="{x:Type TextBox}">
                 <Setter Property="Width" Value="40" />
                 <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="Margin" Value="2,2,2,2"/>
+                <Setter Property="Margin" Value="2,2,2,2" />
             </Style>
             <Style TargetType="{x:Type RadioButton}">
                 <Setter Property="VerticalAlignment" Value="Center" />
@@ -91,5 +91,4 @@
             Foreground="#FFBABABA"
             Text="" />
     </Grid>
-
 </UserControl>

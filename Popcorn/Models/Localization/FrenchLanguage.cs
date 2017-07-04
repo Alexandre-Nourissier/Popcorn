@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight;
-using Popcorn.Models.User;
+﻿using Popcorn.Models.User;
 
 namespace Popcorn.Models.Localization
 {

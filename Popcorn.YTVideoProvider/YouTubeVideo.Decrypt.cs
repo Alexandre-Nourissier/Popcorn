@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Popcorn.YTVideoProvider.Helpers;
+using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Popcorn.YTVideoProvider.Helpers;
 
 namespace Popcorn.YTVideoProvider
 {
@@ -69,9 +69,9 @@ namespace Popcorn.YTVideoProvider
 
         private Operations Operations(string js, out string[] lines)
         {
-            // NOTE: We have to be careful from here on out, 
-            // as the typical size for js is about 1 MB. 
-            // Unnecessary string allocations could cost 
+            // NOTE: We have to be careful from here on out,
+            // as the typical size for js is about 1 MB.
+            // Unnecessary string allocations could cost
             // megabytes of memory.
 
             string function = DecryptFunction(js);
@@ -79,14 +79,14 @@ namespace Popcorn.YTVideoProvider
             string body = FunctionBody(function, js, index);
             lines = body.Split(';');
 
-            // We have to find the identifiers 
-            // for three cipher functions. One 
-            // does a reverse, one does a 
+            // We have to find the identifiers
+            // for three cipher functions. One
+            // does a reverse, one does a
             // splice, and one does a char swap.
 
             string reverse = null, splice = null, swap = null;
 
-            // Skip the first and last statements; 
+            // Skip the first and last statements;
             // they're only split and join statements
             for (int i = 1; i < lines.Length - 1; i++)
             {
@@ -99,7 +99,7 @@ namespace Popcorn.YTVideoProvider
                 to. To do this, we have to identify
                 each function based on its
                 characteristics, e.g:
-                
+
                 - Reverse takes 1 parameter
                 - Swap contains "var" and "c=a", 2 parameters
                 - Splice also has 2 parameters, has "return" */
@@ -122,8 +122,8 @@ namespace Popcorn.YTVideoProvider
                     continue;
                 }
 
-                // If we got here there are at least 
-                // 2 parameters in the method, so 
+                // If we got here there are at least
+                // 2 parameters in the method, so
                 // it has to be either Swap or Splice.
 
                 // check for Swap
@@ -150,7 +150,7 @@ namespace Popcorn.YTVideoProvider
         private string DecryptFunction(string js)
         {
             /*
-			Somewhere within the JavaScript source code 
+			Somewhere within the JavaScript source code
 			is an expression that looks like this:
 
 			foo.sig || bar(baz)
@@ -187,7 +187,6 @@ namespace Popcorn.YTVideoProvider
                     }
                     //Didn't find function
                     return String.Empty;
-
                 }
                 index += SigTrig.Length;
                 int start = index;
@@ -220,7 +219,6 @@ namespace Popcorn.YTVideoProvider
                 return js.Substring(start, end - start);
             }
 
-
             // Alternative for finding old function
 
             //var regex2 = new Regex(@"\.sig\|\|(?<sig>[a-zA-Z0-9$]+)\(",RegexOptions.IgnoreCase);
@@ -250,6 +248,7 @@ namespace Popcorn.YTVideoProvider
                     case '{':
                         depth++;
                         break;
+
                     case '}':
                         if (--depth == 0)
                             return index;
@@ -261,11 +260,11 @@ namespace Popcorn.YTVideoProvider
         private string SubDecryptFunction(string line)
         {
             // Sample code:
-            // 
+            //
             // function gs(a){a=a.split("");fs.yy(a,40);fs.Q2(a,3);
             // fs.yy(a,53);fs.yy(a,11);fs.Q2(a,3);fs.cK(a,8);fs.Q2(a,3);
             // fs.yy(a,16);fs.cK(a,75);return a.join("")}
-            // 
+            //
             // Our goal here is to find "yy", "Q2", and "cK".
 
             int start = line.IndexOf('.') + 1;

@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Popcorn.Models.Episode;
-using Popcorn.Models.Movie;
+﻿using Popcorn.Models.Movie;
 using Popcorn.Models.Shows;
 using Popcorn.Models.User;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Popcorn.Services.User
 {

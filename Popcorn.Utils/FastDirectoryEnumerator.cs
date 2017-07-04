@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Microsoft.Win32.SafeHandles;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using Microsoft.Win32.SafeHandles;
 
 namespace Popcorn.Utils
 {
     /// <summary>
-    /// Contains information about a file returned by the 
+    /// Contains information about a file returned by the
     /// <see cref="FastDirectoryEnumerator"/> class.
     /// </summary>
     [Serializable]
@@ -83,7 +83,6 @@ namespace Popcorn.Utils
         {
             Attributes = findData.dwFileAttributes;
 
-
             CreationTimeUtc = ConvertDateTime(findData.ftCreationTime_dwHighDateTime,
                 findData.ftCreationTime_dwLowDateTime);
 
@@ -101,7 +100,7 @@ namespace Popcorn.Utils
 
         private static long CombineHighLowInts(uint high, uint low)
         {
-            return ((long) high << 0x20) | low;
+            return ((long)high << 0x20) | low;
         }
 
         private static DateTime ConvertDateTime(uint high, uint low)
@@ -112,7 +111,7 @@ namespace Popcorn.Utils
     }
 
     /// <summary>
-    /// Contains information about the file that is found 
+    /// Contains information about the file that is found
     /// by the FindFirstFile or FindNextFile functions.
     /// </summary>
     [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto), BestFitMapping(false)]
@@ -145,12 +144,12 @@ namespace Popcorn.Utils
     }
 
     /// <summary>
-    /// A fast enumerator of files in a directory.  Use this if you need to get attributes for 
+    /// A fast enumerator of files in a directory.  Use this if you need to get attributes for
     /// all files in a directory.
     /// </summary>
     /// <remarks>
     /// This enumerator is substantially faster than using <see cref="Directory.GetFiles(string)"/>
-    /// and then creating a new FileInfo object for each path.  Use this version when you 
+    /// and then creating a new FileInfo object for each path.  Use this version when you
     /// will need to look at the attibutes of each file returned (for example, you need
     /// to check each file in a directory to see if it was modified after a specific date).
     /// </remarks>
@@ -160,7 +159,7 @@ namespace Popcorn.Utils
         /// Gets <see cref="FileData"/> for all the files in a directory.
         /// </summary>
         /// <param name="path">The path to search.</param>
-        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and 
+        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and
         /// allows you to enumerate the files in the given directory.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="path"/> is a null reference (Nothing in VB)
@@ -171,12 +170,12 @@ namespace Popcorn.Utils
         }
 
         /// <summary>
-        /// Gets <see cref="FileData"/> for all the files in a directory that match a 
+        /// Gets <see cref="FileData"/> for all the files in a directory that match a
         /// specific filter.
         /// </summary>
         /// <param name="path">The path to search.</param>
         /// <param name="searchPattern">The search string to match against files in the path.</param>
-        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and 
+        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and
         /// allows you to enumerate the files in the given directory.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="path"/> is a null reference (Nothing in VB)
@@ -190,16 +189,16 @@ namespace Popcorn.Utils
         }
 
         /// <summary>
-        /// Gets <see cref="FileData"/> for all the files in a directory that 
+        /// Gets <see cref="FileData"/> for all the files in a directory that
         /// match a specific filter, optionally including all sub directories.
         /// </summary>
         /// <param name="path">The path to search.</param>
         /// <param name="searchPattern">The search string to match against files in the path.</param>
         /// <param name="searchOption">
-        /// One of the SearchOption values that specifies whether the search 
+        /// One of the SearchOption values that specifies whether the search
         /// operation should include all subdirectories or only the current directory.
         /// </param>
-        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and 
+        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and
         /// allows you to enumerate the files in the given directory.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="path"/> is a null reference (Nothing in VB)
@@ -232,12 +231,12 @@ namespace Popcorn.Utils
         }
 
         /// <summary>
-        /// Gets <see cref="FileData"/> for all the files in a directory that match a 
+        /// Gets <see cref="FileData"/> for all the files in a directory that match a
         /// specific filter.
         /// </summary>
         /// <param name="path">The path to search.</param>
         /// <param name="searchPattern">The search string to match against files in the path.</param>
-        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and 
+        /// <returns>An object that implements <see cref="IEnumerable{FileData}"/> and
         /// allows you to enumerate the files in the given directory.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="path"/> is a null reference (Nothing in VB)
@@ -257,7 +256,7 @@ namespace Popcorn.Utils
         }
 
         /// <summary>
-        /// Provides the implementation of the 
+        /// Provides the implementation of the
         /// <see cref="T:System.Collections.Generic.IEnumerable`1"/> interface
         /// </summary>
         private class FileEnumerable : IEnumerable<FileData>
@@ -272,7 +271,7 @@ namespace Popcorn.Utils
             /// <param name="path">The path to search.</param>
             /// <param name="filter">The search string to match against files in the path.</param>
             /// <param name="searchOption">
-            /// One of the SearchOption values that specifies whether the search 
+            /// One of the SearchOption values that specifies whether the search
             /// operation should include all subdirectories or only the current directory.
             /// </param>
             public FileEnumerable(string path, string filter, SearchOption searchOption)
@@ -288,7 +287,7 @@ namespace Popcorn.Utils
             /// Returns an enumerator that iterates through the collection.
             /// </summary>
             /// <returns>
-            /// A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can 
+            /// A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can
             /// be used to iterate through the collection.
             /// </returns>
             public IEnumerator<FileData> GetEnumerator()
@@ -296,7 +295,7 @@ namespace Popcorn.Utils
                 return new FileEnumerator(_mPath, _mFilter, _mSearchOption);
             }
 
-            #endregion
+            #endregion IEnumerable<FileData> Members
 
             #region IEnumerable Members
 
@@ -304,7 +303,7 @@ namespace Popcorn.Utils
             /// Returns an enumerator that iterates through a collection.
             /// </summary>
             /// <returns>
-            /// An <see cref="T:System.Collections.IEnumerator"/> object that can be 
+            /// An <see cref="T:System.Collections.IEnumerator"/> object that can be
             /// used to iterate through the collection.
             /// </returns>
             System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -312,7 +311,7 @@ namespace Popcorn.Utils
                 return new FileEnumerator(_mPath, _mFilter, _mSearchOption);
             }
 
-            #endregion
+            #endregion IEnumerable Members
         }
 
         /// <summary>
@@ -337,8 +336,8 @@ namespace Popcorn.Utils
             /// When overridden in a derived class, executes the code required to free the handle.
             /// </summary>
             /// <returns>
-            /// true if the handle is released successfully; otherwise, in the 
-            /// event of a catastrophic failure, false. In this case, it 
+            /// true if the handle is released successfully; otherwise, in the
+            /// event of a catastrophic failure, false. In this case, it
             /// generates a releaseHandleFailed MDA Managed Debugging Assistant.
             /// </returns>
             protected override bool ReleaseHandle()
@@ -348,7 +347,7 @@ namespace Popcorn.Utils
         }
 
         /// <summary>
-        /// Provides the implementation of the 
+        /// Provides the implementation of the
         /// <see cref="T:System.Collections.Generic.IEnumerator`1"/> interface
         /// </summary>
         [System.Security.SuppressUnmanagedCodeSecurity]
@@ -391,7 +390,7 @@ namespace Popcorn.Utils
             /// <param name="path">The path to search.</param>
             /// <param name="filter">The search string to match against files in the path.</param>
             /// <param name="searchOption">
-            /// One of the SearchOption values that specifies whether the search 
+            /// One of the SearchOption values that specifies whether the search
             /// operation should include all subdirectories or only the current directory.
             /// </param>
             public FileEnumerator(string path, string filter, SearchOption searchOption)
@@ -418,12 +417,12 @@ namespace Popcorn.Utils
             /// </returns>
             public FileData Current => new FileData(_mPath, _mWinFindData);
 
-            #endregion
+            #endregion IEnumerator<FileData> Members
 
             #region IDisposable Members
 
             /// <summary>
-            /// Performs application-defined tasks associated with freeing, releasing, 
+            /// Performs application-defined tasks associated with freeing, releasing,
             /// or resetting unmanaged resources.
             /// </summary>
             public void Dispose()
@@ -431,7 +430,7 @@ namespace Popcorn.Utils
                 _mHndFindFile?.Dispose();
             }
 
-            #endregion
+            #endregion IDisposable Members
 
             #region IEnumerator Members
 
@@ -448,7 +447,7 @@ namespace Popcorn.Utils
             /// Advances the enumerator to the next element of the collection.
             /// </summary>
             /// <returns>
-            /// true if the enumerator was successfully advanced to the next element; 
+            /// true if the enumerator was successfully advanced to the next element;
             /// false if the enumerator has passed the end of the collection.
             /// </returns>
             /// <exception cref="T:System.InvalidOperationException">
@@ -458,7 +457,7 @@ namespace Popcorn.Utils
             {
                 bool retval = false;
 
-                //If the handle is null, this is first call to MoveNext in the current 
+                //If the handle is null, this is first call to MoveNext in the current
                 // directory.  In that case, start a new search.
                 if (_mCurrentContext.SubdirectoriesToProcess == null)
                 {
@@ -482,7 +481,7 @@ namespace Popcorn.Utils
                 {
                     if ((_mWinFindData.dwFileAttributes & FileAttributes.Directory) == FileAttributes.Directory)
                     {
-                        //Ignore folders for now.   We call MoveNext recursively here to 
+                        //Ignore folders for now.   We call MoveNext recursively here to
                         // move to the next item that FindNextFile will return.
                         return MoveNext();
                     }
@@ -511,7 +510,7 @@ namespace Popcorn.Utils
                         return MoveNext();
                     }
 
-                    //If there are no more files in this directory and we are 
+                    //If there are no more files in this directory and we are
                     // in a sub directory, pop back up to the parent directory and
                     // continue the search from there.
                     if (_mContextStack.Count > 0)
@@ -542,7 +541,7 @@ namespace Popcorn.Utils
                 _mHndFindFile = null;
             }
 
-            #endregion
+            #endregion IEnumerator Members
         }
     }
 }

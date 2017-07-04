@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Async;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using NuGet;
 using Popcorn.Comparers;
-using Popcorn.Extensions;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Models.Shows;
 using Popcorn.Services.Application;
 using Popcorn.Services.Shows.Show;
 using Popcorn.Services.User;
+using System;
+using System.Collections.Async;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Show.Tabs
 {

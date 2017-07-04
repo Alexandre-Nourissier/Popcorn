@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Popcorn.Models.Version
+﻿namespace Popcorn.Models.Version
 {
     public class VersionInfo
     {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
@@ -14,13 +7,20 @@ using NLog;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Models.Movie;
+using Popcorn.Models.Torrent.Movie;
+using Popcorn.Services.Download;
 using Popcorn.Services.Movies.Movie;
 using Popcorn.Services.Movies.Trailer;
 using Popcorn.Services.Subtitles;
 using Popcorn.ViewModels.Pages.Home.Movie.Download;
-using Popcorn.Models.Torrent.Movie;
-using Popcorn.Services.Download;
 using Popcorn.ViewModels.Windows.Settings;
+using System;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Subtitle = Popcorn.Models.Subtitles.Subtitle;
 
 namespace Popcorn.ViewModels.Pages.Home.Movie.Details
@@ -305,7 +305,6 @@ namespace Popcorn.ViewModels.Pages.Home.Movie.Details
                     var subtitles = await SubtitlesService.SearchSubtitlesFromImdb(
                         languages.Select(lang => lang.SubLanguageID).Aggregate((a, b) => a + "," + b),
                         imdbId.ToString(), null, null);
-
 
                     DispatcherHelper.CheckBeginInvokeOnUI(() =>
                     {

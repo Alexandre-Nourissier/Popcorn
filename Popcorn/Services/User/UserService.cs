@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using NLog;
 using Popcorn.Messaging;
 using Popcorn.Models.Localization;
@@ -13,10 +6,17 @@ using Popcorn.Models.Movie;
 using Popcorn.Models.Shows;
 using Popcorn.Models.User;
 using Popcorn.Services.Movies.Movie;
+using Popcorn.Services.Shows.Show;
 using Popcorn.Utils;
 using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using WPFLocalizeExtension.Engine;
-using Popcorn.Services.Shows.Show;
 
 namespace Popcorn.Services.User
 {
@@ -468,6 +468,7 @@ namespace Popcorn.Services.User
                     case "fr":
                         currentLanguage = new FrenchLanguage();
                         break;
+
                     default:
                         currentLanguage = new EnglishLanguage();
                         break;

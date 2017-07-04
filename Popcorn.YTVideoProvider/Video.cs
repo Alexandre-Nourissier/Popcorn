@@ -17,12 +17,12 @@ namespace Popcorn.YTVideoProvider
         }
 
         public abstract Task<string> GetUriAsync();
+
         public abstract string Title { get; }
         public abstract WebSites WebSite { get; }
 
         public virtual VideoFormat Format => VideoFormat.Unknown;
         // public virtual AudioFormat AudioFormat => AudioFormat.Unknown;
-
 
         public byte[] GetBytes() =>
             GetBytesAsync().GetAwaiter().GetResult();

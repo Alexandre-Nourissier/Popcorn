@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Popcorn.OSDB;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Popcorn.OSDB;
 
 namespace Popcorn.Services.Subtitles
 {

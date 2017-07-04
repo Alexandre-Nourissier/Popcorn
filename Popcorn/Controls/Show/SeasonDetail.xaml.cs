@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Popcorn.Events;
+using Popcorn.Models.Shows;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Popcorn.Events;
-using Popcorn.Models.Shows;
 
 namespace Popcorn.Controls.Show
 {
@@ -26,7 +26,7 @@ namespace Popcorn.Controls.Show
         /// </summary>
         public ShowJson Show
         {
-            get => (ShowJson) GetValue(ShowProperty);
+            get => (ShowJson)GetValue(ShowProperty);
             set => SetValue(ShowProperty, value);
         }
 

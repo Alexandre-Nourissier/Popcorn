@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Popcorn.Models.Genres;
+﻿using Popcorn.Models.Genres;
 using Popcorn.Models.Shows;
 using Popcorn.Models.User;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Popcorn.Services.Shows.Show
 {

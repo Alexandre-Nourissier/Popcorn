@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Threading;
-using NLog;
 
 namespace Popcorn.Helpers
 {

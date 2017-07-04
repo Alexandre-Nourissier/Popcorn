@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using NLog;
 using Popcorn.Models.User;
 using Popcorn.Services.User;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Popcorn.Models.Localization
 {

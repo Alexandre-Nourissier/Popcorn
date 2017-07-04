@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Popcorn.ColorPicker
 {
@@ -24,7 +15,7 @@ namespace Popcorn.ColorPicker
         {
             get { return typeof(ColorDisplay); }
         }
-        
+
         #region Color
 
         public static DependencyProperty ColorProperty = DependencyProperty.Register("Color", typeof(Color), ClassType,
@@ -33,24 +24,23 @@ namespace Popcorn.ColorPicker
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var display = (ColorDisplay) d;
-            var color = (Color) e.NewValue;
+            var display = (ColorDisplay)d;
+            var color = (Color)e.NewValue;
             display.OnColorChanged(color);
         }
 
         private void OnColorChanged(Color color)
         {
-
             colorRect.Background = new SolidColorBrush(color);
         }
 
-        #endregion
+        #endregion Color
 
         public ColorDisplay()
         {

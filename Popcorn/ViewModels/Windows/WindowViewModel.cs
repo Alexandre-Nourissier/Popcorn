@@ -1,13 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Navigation;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
@@ -21,6 +12,7 @@ using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Services.Application;
 using Popcorn.Services.FileServer;
+using Popcorn.Services.Subtitles;
 using Popcorn.Services.User;
 using Popcorn.Utils;
 using Popcorn.Utils.Exceptions;
@@ -29,9 +21,17 @@ using Popcorn.ViewModels.Pages.Home;
 using Popcorn.ViewModels.Pages.Home.Movie;
 using Popcorn.ViewModels.Pages.Home.Show;
 using Popcorn.ViewModels.Pages.Player;
-using Squirrel;
 using Popcorn.ViewModels.Windows.Settings;
-using Popcorn.Services.Subtitles;
+using Squirrel;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Navigation;
 
 namespace Popcorn.ViewModels.Windows
 {
@@ -116,7 +116,7 @@ namespace Popcorn.ViewModels.Windows
         private MediaPlayerViewModel _mediaPlayer;
 
         /// <summary>
-        /// Ignore taskbar on maximize 
+        /// Ignore taskbar on maximize
         /// </summary>
         private bool _ignoreTaskbarOnMaximize;
 
@@ -155,7 +155,7 @@ namespace Popcorn.ViewModels.Windows
         }
 
         /// <summary>
-        /// Ignore taskbar on maximize 
+        /// Ignore taskbar on maximize
         /// </summary>
         public bool IgnoreTaskbarOnMaximize
         {
@@ -563,7 +563,7 @@ namespace Popcorn.ViewModels.Windows
                 {
                     if (e.Data.GetDataPresent(DataFormats.FileDrop))
                     {
-                        var files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+                        var files = (string[])e.Data.GetData(DataFormats.FileDrop);
                         var torrentFile = files?.FirstOrDefault(a => a.Contains("torrent"));
                         if (torrentFile != null)
                         {

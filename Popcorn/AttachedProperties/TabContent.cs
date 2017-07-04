@@ -21,59 +21,60 @@ namespace Popcorn.AttachedProperties
         /// </summary>
         /// <remarks>When TabContent.IsCached is true, visual state of each tab is preserved (cached), even when the tab is hidden</remarks>
         public static readonly DependencyProperty IsCachedProperty =
-            DependencyProperty.RegisterAttached("IsCached", typeof (bool), typeof (TabContent),
+            DependencyProperty.RegisterAttached("IsCached", typeof(bool), typeof(TabContent),
                 new UIPropertyMetadata(false, OnIsCachedChanged));
 
         /// <summary>
         /// Used instead of TabControl.ContentTemplate for cached tabs
         /// </summary>
         public static readonly DependencyProperty TemplateProperty =
-            DependencyProperty.RegisterAttached("Template", typeof (DataTemplate), typeof (TabContent),
+            DependencyProperty.RegisterAttached("Template", typeof(DataTemplate), typeof(TabContent),
                 new UIPropertyMetadata(null));
 
         /// <summary>
         /// Used instead of TabControl.ContentTemplateSelector for cached tabs
         /// </summary>
         public static readonly DependencyProperty TemplateSelectorProperty =
-            DependencyProperty.RegisterAttached("TemplateSelector", typeof (DataTemplateSelector), typeof (TabContent),
+            DependencyProperty.RegisterAttached("TemplateSelector", typeof(DataTemplateSelector), typeof(TabContent),
                 new UIPropertyMetadata(null));
 
         // Using a DependencyProperty as the backing store for InternalTabControl.  This enables animation, styling, binding, etc...
-        [EditorBrowsable(EditorBrowsableState.Never)] public static readonly DependencyProperty
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static readonly DependencyProperty
             InternalTabControlProperty =
-                DependencyProperty.RegisterAttached("InternalTabControl", typeof (TabControl), typeof (TabContent),
+                DependencyProperty.RegisterAttached("InternalTabControl", typeof(TabControl), typeof(TabContent),
                     new UIPropertyMetadata(null, OnInternalTabControlChanged));
 
         // Using a DependencyProperty as the backing store for InternalCachedContent.  This enables animation, styling, binding, etc...
-        [EditorBrowsable(EditorBrowsableState.Never)] public static readonly DependencyProperty
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static readonly DependencyProperty
             InternalCachedContentProperty =
-                DependencyProperty.RegisterAttached("InternalCachedContent", typeof (ContentControl),
-                    typeof (TabContent), new UIPropertyMetadata(null));
+                DependencyProperty.RegisterAttached("InternalCachedContent", typeof(ContentControl),
+                    typeof(TabContent), new UIPropertyMetadata(null));
 
         // Using a DependencyProperty as the backing store for InternalContentManager.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty InternalContentManagerProperty =
-            DependencyProperty.RegisterAttached("InternalContentManager", typeof (object), typeof (TabContent),
+            DependencyProperty.RegisterAttached("InternalContentManager", typeof(object), typeof(TabContent),
                 new UIPropertyMetadata(null));
 
-        public static bool GetIsCached(DependencyObject obj) => (bool) obj.GetValue(IsCachedProperty);
+        public static bool GetIsCached(DependencyObject obj) => (bool)obj.GetValue(IsCachedProperty);
 
         public static void SetIsCached(DependencyObject obj, bool value) => obj.SetValue(IsCachedProperty, value);
 
-        private static DataTemplate GetTemplate(DependencyObject obj) => (DataTemplate) obj.GetValue(TemplateProperty);
+        private static DataTemplate GetTemplate(DependencyObject obj) => (DataTemplate)obj.GetValue(TemplateProperty);
 
         public static void SetTemplate(DependencyObject obj, DataTemplate value)
             => obj.SetValue(TemplateProperty, value);
 
-
         private static DataTemplateSelector GetTemplateSelector(DependencyObject obj)
-            => (DataTemplateSelector) obj.GetValue(TemplateSelectorProperty);
+            => (DataTemplateSelector)obj.GetValue(TemplateSelectorProperty);
 
         public static void SetTemplateSelector(DependencyObject obj, DataTemplateSelector value)
             => obj.SetValue(TemplateSelectorProperty, value);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static TabControl GetInternalTabControl(DependencyObject obj)
-            => (TabControl) obj.GetValue(InternalTabControlProperty);
+            => (TabControl)obj.GetValue(InternalTabControlProperty);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static void SetInternalTabControl(DependencyObject obj, TabControl value)
@@ -81,7 +82,7 @@ namespace Popcorn.AttachedProperties
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         private static ContentControl GetInternalCachedContent(DependencyObject obj)
-            => (ContentControl) obj.GetValue(InternalCachedContentProperty);
+            => (ContentControl)obj.GetValue(InternalCachedContentProperty);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         private static void SetInternalCachedContent(DependencyObject obj, ContentControl value)
@@ -105,11 +106,11 @@ namespace Popcorn.AttachedProperties
                                                     args.NewValue.GetType().Name +
                                                     ". Only objects of type TabControl can have TabContent.IsCached property.");
 
-            var newValue = (bool) args.NewValue;
+            var newValue = (bool)args.NewValue;
 
             if (!newValue)
             {
-                if (args.OldValue != null && ((bool) args.OldValue))
+                if (args.OldValue != null && ((bool)args.OldValue))
                     throw new NotImplementedException(
                         "Cannot change TabContent.IsCached from True to False. Turning tab caching off is not implemented");
 
@@ -126,15 +127,15 @@ namespace Popcorn.AttachedProperties
             const string xaml =
                 "<DataTemplate><Border b:TabContent.InternalTabControl=\"{Binding RelativeSource={RelativeSource AncestorType=TabControl}}\" /></DataTemplate>";
 
-            var context = new ParserContext {XamlTypeMapper = new XamlTypeMapper(new string[0])};
+            var context = new ParserContext { XamlTypeMapper = new XamlTypeMapper(new string[0]) };
 
-            context.XamlTypeMapper.AddMappingProcessingInstruction("b", typeof (TabContent).Namespace,
-                typeof (TabContent).Assembly.FullName);
+            context.XamlTypeMapper.AddMappingProcessingInstruction("b", typeof(TabContent).Namespace,
+                typeof(TabContent).Assembly.FullName);
 
             context.XmlnsDictionary.Add("", "http://schemas.microsoft.com/winfx/2006/xaml/presentation");
             context.XmlnsDictionary.Add("b", "b");
 
-            var template = (DataTemplate) XamlReader.Parse(xaml, context);
+            var template = (DataTemplate)XamlReader.Parse(xaml, context);
             return template;
         }
 
@@ -155,18 +156,18 @@ namespace Popcorn.AttachedProperties
                 throw new InvalidOperationException("Value of TabContent.InternalTabControl cannot be of type " +
                                                     args.NewValue.GetType().Name + ", it must be of type TabControl");
 
-            var tabControl = (TabControl) args.NewValue;
+            var tabControl = (TabControl)args.NewValue;
             var contentManager = GetContentManager(tabControl, container);
             contentManager.UpdateSelectedTab();
         }
 
         private static ContentManager GetContentManager(TabControl tabControl, Decorator container)
         {
-            var contentManager = (ContentManager) GetInternalContentManager(tabControl);
+            var contentManager = (ContentManager)GetInternalContentManager(tabControl);
             if (contentManager != null)
                 /*
-                 * Content manager already exists for the tab control. This means that tab content template is applied 
-                 * again, and new instance of the Border control (container) has been created. The old container 
+                 * Content manager already exists for the tab control. This means that tab content template is applied
+                 * again, and new instance of the Border control (container) has been created. The old container
                  * referenced by the content manager is no longer visible and needs to be replaced
                  */
                 contentManager.ReplaceContainer(container);
@@ -190,7 +191,7 @@ namespace Popcorn.AttachedProperties
         private static void EnsureContentTemplateIsNotModified(TabControl tabControl)
         {
             var descriptor = DependencyPropertyDescriptor.FromProperty(TabControl.ContentTemplateProperty,
-                typeof (TabControl));
+                typeof(TabControl));
             descriptor.AddValueChanged(tabControl, (sender, args) =>
             {
                 throw new InvalidOperationException(

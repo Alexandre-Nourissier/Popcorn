@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
 namespace Popcorn.ColorPicker.ColorModels.Lab
 {
-    class B : NormalComponent
+    internal class B : NormalComponent
     {
-
         private const double D65X = 0.9505;
         private const double D65Y = 1.0;
         private const double D65Z = 1.0890;
 
         private static LabModel sModel = new LabModel();
-
 
         public override bool IsNormalIndependantOfColor
         {
@@ -29,25 +24,23 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             {
                 bitmap.Lock();
                 int currentPixel = -1;
-                byte* pStart = (byte*) (void*) bitmap.BackBuffer;
-                double iRowUnit = (double) (MaxValue - MinValue) / bitmap.PixelHeight;
+                byte* pStart = (byte*)(void*)bitmap.BackBuffer;
+                double iRowUnit = (double)(MaxValue - MinValue) / bitmap.PixelHeight;
                 double iRowCurrent = 100;
                 double l = sModel.LComponent(color);
                 double a = sModel.AComponent(color);
                 for (int iRow = 0; iRow < bitmap.PixelHeight; iRow++)
                 {
-
                     Color lightness = sModel.Color(l, a, iRowCurrent);
                     for (int iCol = 0; iCol < bitmap.PixelWidth; iCol++)
                     {
                         currentPixel++;
                         *(pStart + currentPixel * 3 + 0) = lightness.B; //Blue
-                        *(pStart + currentPixel * 3 + 1) = lightness.G; //Green 
+                        *(pStart + currentPixel * 3 + 1) = lightness.G; //Green
                         *(pStart + currentPixel * 3 + 2) = lightness.R; //red
                     }
 
                     iRowCurrent -= iRowUnit;
-
                 }
 
                 bitmap.AddDirtyRect(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
@@ -61,14 +54,13 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             unsafe
             {
                 bitmap.Lock();
-                byte* pStart = (byte*) (void*) bitmap.BackBuffer;
+                byte* pStart = (byte*)(void*)bitmap.BackBuffer;
                 int currentPixel = -1;
-                double iRowUnit = (double) 100 / bitmap.PixelHeight;
-                double iColUnit = (double) 1;
+                double iRowUnit = (double)100 / bitmap.PixelHeight;
+                double iColUnit = (double)1;
                 double iRowCurrent = 100;
 
-
-                double b = (double) normalComponentValue;
+                double b = (double)normalComponentValue;
                 for (int iRow = 0; iRow < bitmap.PixelHeight; iRow++)
                 {
                     double l = iRowCurrent;
@@ -101,13 +93,11 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
                                 : (1 + 0.055) * Math.Pow(Clinear[i], (1.0 / 2.4)) - 0.055;
                             Clinear[i] = Math.Min(Clinear[i], 1);
                             Clinear[i] = Math.Max(Clinear[i], 0);
-
                         }
-
 
                         currentPixel++;
                         *(pStart + currentPixel * 3 + 0) = Convert.ToByte(Clinear[2] * 255); //Blue
-                        *(pStart + currentPixel * 3 + 1) = Convert.ToByte(Clinear[1] * 255); //Green 
+                        *(pStart + currentPixel * 3 + 1) = Convert.ToByte(Clinear[1] * 255); //Green
                         *(pStart + currentPixel * 3 + 2) = Convert.ToByte(Clinear[0] * 255); //red
                         iColCurrent += iColUnit;
                     }
@@ -120,7 +110,7 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
 
         public override Color ColorAtPoint(Point selectionPoint, int colorComponentValue)
         {
-            var l = (100 - (double) selectionPoint.Y * 100 / 256);
+            var l = (100 - (double)selectionPoint.Y * 100 / 256);
             var a = selectionPoint.X - 128;
             var b = colorComponentValue;
 

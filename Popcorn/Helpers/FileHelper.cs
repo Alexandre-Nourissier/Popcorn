@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.IO;
 using System.Linq;
-using NLog;
 
 namespace Popcorn.Helpers
 {

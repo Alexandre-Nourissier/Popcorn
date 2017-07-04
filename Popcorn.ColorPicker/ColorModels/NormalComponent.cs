@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -11,7 +7,7 @@ namespace Popcorn.ColorPicker.ColorModels
     public abstract class NormalComponent : ColorComponent
     {
         //Is the Normal bitmap independent of the specific color (false for all but Hue of HSB)
-        public abstract bool IsNormalIndependantOfColor { get; } 
+        public abstract bool IsNormalIndependantOfColor { get; }
 
         //Updates the normal Bitmap (The bitmap with the slider)
         public abstract void UpdateNormalBitmap(WriteableBitmap bitmap, Color color);
@@ -20,7 +16,7 @@ namespace Popcorn.ColorPicker.ColorModels
         public abstract void UpdateColorPlaneBitmap(WriteableBitmap bitmap, int normalComponentValue);
 
         //Gets the color corresponding to a selected point (with 255 alpha)
-        public abstract Color  ColorAtPoint(Point selectionPoint,int colorComponentValue);
+        public abstract Color ColorAtPoint(Point selectionPoint, int colorComponentValue);
 
         //Gets the point on the color plane that corresponds to the color (alpha ignored)
         public abstract Point PointFromColor(Color color);

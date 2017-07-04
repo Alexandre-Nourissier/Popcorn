@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Threading;
+using NLog;
+using Popcorn.Utils;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -8,9 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using GalaSoft.MvvmLight.Threading;
-using NLog;
-using Popcorn.Utils;
 
 namespace Popcorn.AttachedProperties
 {
@@ -31,7 +31,7 @@ namespace Popcorn.AttachedProperties
         /// <returns></returns>
         public static string GetImagePath(DependencyObject obj)
         {
-            return (string) obj.GetValue(ImagePathProperty);
+            return (string)obj.GetValue(ImagePathProperty);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Popcorn.AttachedProperties
                     {
                         Task.Run(async () =>
                         {
-                            var image = (Image) obj;
+                            var image = (Image)obj;
                             var resourceDictionary = new ResourceDictionary
                             {
                                 Source = new Uri("Popcorn;component/Resources/ImageLoading.xaml", UriKind.Relative)
@@ -93,7 +93,7 @@ namespace Popcorn.AttachedProperties
 
                                     var loadingAnimationTransform = group;
 
-                                    #endregion
+                                    #endregion Create Loading Animation
 
                                     image.Source = loadingImage;
                                     image.RenderTransformOrigin = new Point(0.5, 0.5);

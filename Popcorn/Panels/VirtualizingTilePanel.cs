@@ -29,13 +29,13 @@ namespace Popcorn.Panels
         // Accessor for the child size dependency property
         public double ChildWidth
         {
-            get => (double) GetValue(ChildWidthProperty);
+            get => (double)GetValue(ChildWidthProperty);
             set => SetValue(ChildWidthProperty, value);
         }
 
         public double ChildHeight
         {
-            get => (double) GetValue(ChildHeightProperty);
+            get => (double)GetValue(ChildHeightProperty);
             set => SetValue(ChildHeightProperty, value);
         }
 
@@ -51,7 +51,7 @@ namespace Popcorn.Panels
         /// <returns>Size desired</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
-            _columns = (int) (availableSize.Width / ChildWidth);
+            _columns = (int)(availableSize.Width / ChildWidth);
 
             UpdateScrollInfo(availableSize);
 
@@ -182,7 +182,7 @@ namespace Popcorn.Panels
 
             // See how big we are
             return new Size(childrenPerRow * ChildWidth,
-                ChildHeight * Math.Ceiling((double) itemCount / childrenPerRow));
+                ChildHeight * Math.Ceiling((double)itemCount / childrenPerRow));
         }
 
         /// <summary>
@@ -194,15 +194,14 @@ namespace Popcorn.Panels
         {
             var childrenPerRow = CalculateChildrenPerRow(_extent);
 
-            firstVisibleItemIndex = (int) Math.Floor(_offset.Y / ChildHeight) * childrenPerRow;
+            firstVisibleItemIndex = (int)Math.Floor(_offset.Y / ChildHeight) * childrenPerRow;
             lastVisibleItemIndex =
-                (int) Math.Ceiling((_offset.Y + _viewport.Height) / ChildHeight) * childrenPerRow - 1;
+                (int)Math.Ceiling((_offset.Y + _viewport.Height) / ChildHeight) * childrenPerRow - 1;
 
             var itemsControl = ItemsControl.GetItemsOwner(this);
             var itemCount = itemsControl.HasItems ? itemsControl.Items.Count : 0;
             if (lastVisibleItemIndex >= itemCount)
                 lastVisibleItemIndex = itemCount - 1;
-
         }
 
         /// <summary>
@@ -244,11 +243,11 @@ namespace Popcorn.Panels
             if (double.IsPositiveInfinity(availableSize.Width))
                 childrenPerRow = Children.Count;
             else
-                childrenPerRow = Math.Max(1, (int) Math.Floor(availableSize.Width / ChildWidth));
+                childrenPerRow = Math.Max(1, (int)Math.Floor(availableSize.Width / ChildWidth));
             return childrenPerRow;
         }
 
-        #endregion
+        #endregion Layout specific code
 
         #region IScrollInfo implementation
 
@@ -392,6 +391,6 @@ namespace Popcorn.Panels
         private Size _viewport = new Size(0, 0);
         private Point _offset;
 
-        #endregion
+        #endregion IScrollInfo implementation
     }
 }

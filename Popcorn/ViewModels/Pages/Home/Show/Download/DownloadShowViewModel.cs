@@ -1,20 +1,20 @@
-﻿using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using NLog;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
+using Popcorn.Models.Bandwidth;
 using Popcorn.Models.Episode;
+using Popcorn.Services.Download;
 using Popcorn.Services.Subtitles;
 using Popcorn.Utils;
 using Popcorn.ViewModels.Windows.Settings;
-using GalaSoft.MvvmLight.Ioc;
-using Popcorn.Models.Bandwidth;
-using Popcorn.Services.Download;
+using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Show.Download
 {
@@ -23,7 +23,7 @@ namespace Popcorn.ViewModels.Pages.Home.Show.Download
         /// <summary>
         /// Logger of the class
         /// </summary>
-        private static Logger Logger { get; }= LogManager.GetCurrentClassLogger();
+        private static Logger Logger { get; } = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Used to interact with subtitles

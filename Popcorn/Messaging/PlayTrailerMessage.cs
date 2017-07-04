@@ -1,6 +1,6 @@
-﻿using System;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Utils;
+using System;
 
 namespace Popcorn.Messaging
 {

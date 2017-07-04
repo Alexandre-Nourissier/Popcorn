@@ -1,9 +1,8 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Messaging;
+using Popcorn.Models.Bandwidth;
 using Popcorn.Models.Movie;
 using System;
-using Popcorn.Models.Bandwidth;
-using Popcorn.Models.Media;
 
 namespace Popcorn.Services.Download
 {

@@ -1,7 +1,7 @@
-﻿using System.Threading;
+﻿using Popcorn.ViewModels.Pages.Home.Show.Tabs;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using Popcorn.ViewModels.Pages.Home.Show.Tabs;
 
 namespace Popcorn.UserControls.Home.Show.Tabs
 {

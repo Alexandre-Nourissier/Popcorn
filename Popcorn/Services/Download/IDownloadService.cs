@@ -1,9 +1,9 @@
-﻿using Popcorn.Models.Media;
+﻿using Popcorn.Models.Bandwidth;
+using Popcorn.Models.Media;
 using Popcorn.Utils;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Popcorn.Models.Bandwidth;
 
 namespace Popcorn.Services.Download
 {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Threading;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Microsoft.ApplicationInsights.NLogTarget;
 using NLog;
@@ -15,6 +8,13 @@ using Popcorn.Messaging;
 using Popcorn.Utils;
 using Popcorn.Utils.Exceptions;
 using Popcorn.Windows;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 using WPFLocalizeExtension.Engine;
 
 namespace Popcorn
@@ -47,7 +47,7 @@ namespace Popcorn
             WatchStart = Stopwatch.StartNew();
             var config = new LoggingConfiguration();
             var target =
-                new ApplicationInsightsTarget {InstrumentationKey = Constants.AiKey};
+                new ApplicationInsightsTarget { InstrumentationKey = Constants.AiKey };
             var rule = new LoggingRule("*", LogLevel.Trace, target);
             config.LoggingRules.Add(rule);
             LogManager.Configuration = config;

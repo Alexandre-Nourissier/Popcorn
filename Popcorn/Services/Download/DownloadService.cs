@@ -1,17 +1,17 @@
-﻿using Popcorn.Utils;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using GalaSoft.MvvmLight.Messaging;
 using lt;
 using NLog;
-using System.IO;
-using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Models.Bandwidth;
 using Popcorn.Models.Media;
+using Popcorn.Utils;
 using Popcorn.Utils.Exceptions;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Popcorn.Services.Download
 {
@@ -68,9 +68,11 @@ namespace Popcorn.Services.Download
                         case MediaType.Movie:
                             savePath = Constants.MovieDownloads;
                             break;
+
                         case MediaType.Show:
                             savePath = Constants.ShowDownloads;
                             break;
+
                         case MediaType.Unkown:
                             savePath = Constants.DropFilesDownloads;
                             break;
@@ -156,8 +158,8 @@ namespace Popcorn.Services.Download
                         UploadRate = upRate
                     });
 
-                    ((IProgress<double>) prog).Report(progress);
-                    ((IProgress<BandwidthRate>) bandwidth).Report(new BandwidthRate
+                    ((IProgress<double>)prog).Report(progress);
+                    ((IProgress<BandwidthRate>)bandwidth).Report(new BandwidthRate
                     {
                         DownloadRate = downRate,
                         UploadRate = upRate
@@ -173,6 +175,7 @@ namespace Popcorn.Services.Download
                         case MediaType.Show:
                             minimumBuffering = Constants.MinimumShowBuffering;
                             break;
+
                         default:
                             minimumBuffering = Constants.MinimumMovieBuffering;
                             break;

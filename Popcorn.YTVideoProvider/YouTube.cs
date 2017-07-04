@@ -29,7 +29,7 @@ namespace Popcorn.YTVideoProvider
 
         private bool TryNormalize(string videoUri, out string normalized)
         {
-            // If you fix something in here, please be sure to fix in 
+            // If you fix something in here, please be sure to fix in
             // DownloadUrlResolver.TryNormalizeYoutubeUrl as well.
 
             normalized = null;
@@ -77,7 +77,7 @@ namespace Popcorn.YTVideoProvider
             }
 
             string map = Json.GetKey("url_encoded_fmt_stream_map", source);
-            var queries = map.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(Unscramble).ToList();
+            var queries = map.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(Unscramble).ToList();
 
             foreach (var query in queries)
                 yield return new YouTubeVideo(title, query, jsPlayer);
@@ -122,14 +122,11 @@ namespace Popcorn.YTVideoProvider
             }
             else
             {
-
-                var queries2 = adaptiveMap.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries).Select(Unscramble)
+                var queries2 = adaptiveMap.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(Unscramble)
                     .ToList();
                 foreach (var query in queries2)
                     yield return new YouTubeVideo(title, query, jsPlayer);
             }
-
-
         }
 
         // TODO: Consider making this static...

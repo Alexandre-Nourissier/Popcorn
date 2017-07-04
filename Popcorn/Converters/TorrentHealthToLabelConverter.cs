@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Popcorn.Helpers;
+using System;
 using System.Globalization;
 using System.Windows.Data;
-using System.Windows.Media;
-using Popcorn.Helpers;
 
 namespace Popcorn.Converters
 {

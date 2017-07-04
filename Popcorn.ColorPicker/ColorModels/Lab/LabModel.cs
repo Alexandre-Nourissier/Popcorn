@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace Popcorn.ColorPicker.ColorModels.Lab
 {
-    class LabModel
+    internal class LabModel
     {
         private const double D65X = 0.9505;
         private const double D65Y = 1.0;
@@ -56,9 +56,7 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             double g = (gLinear > 0.04045) ? Math.Pow((gLinear + 0.055) / (1 + 0.055), 2.2) : (gLinear / 12.92);
             double b = (bLinear > 0.04045) ? Math.Pow((bLinear + 0.055) / (1 + 0.055), 2.2) : (bLinear / 12.92);
 
-
             double CIEY = r * 0.2126 + g * 0.7152 + b * 0.0722;
-
 
             double l = 116.0 * Fxyz(CIEY / D65Y) - 16;
             return l;
@@ -77,12 +75,10 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             double CIEX = r * 0.4124 + g * 0.3576 + b * 0.1805;
             double CIEY = r * 0.2126 + g * 0.7152 + b * 0.0722;
 
-
-
             double a = 500.0 * (Fxyz(CIEX / D65X) - Fxyz(CIEY / D65Y));
             return a;
         }
-        
+
         public double BComponent(Color color)
         {
             double rLinear = color.R / 255.0;
@@ -93,18 +89,14 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             double g = (gLinear > 0.04045) ? Math.Pow((gLinear + 0.055) / (1 + 0.055), 2.2) : (gLinear / 12.92);
             double b = (bLinear > 0.04045) ? Math.Pow((bLinear + 0.055) / (1 + 0.055), 2.2) : (bLinear / 12.92);
 
-
             double CIEY = r * 0.2126 + g * 0.7152 + b * 0.0722;
             double CIEZ = r * 0.0193 + g * 0.1192 + b * 0.9505;
 
-
             return 200.0 * (Fxyz(CIEY / D65Y) - Fxyz(CIEZ / D65Z));
-
         }
 
         private static double Fxyz(double t)
         {
-
             return ((t > 0.008856) ? Math.Pow(t, (1.0 / 3.0)) : (7.787 * t + 16.0 / 116.0));
         }
     }

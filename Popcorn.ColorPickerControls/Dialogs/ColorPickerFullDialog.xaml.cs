@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Popcorn.ColorPicker;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
-using Popcorn.ColorPicker;
 
 namespace Popcorn.ColorPickerControls.Dialogs
 {
@@ -23,7 +23,6 @@ namespace Popcorn.ColorPickerControls.Dialogs
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
-
         }
 
         [Category("ColorPicker")]

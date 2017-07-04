@@ -39,10 +39,10 @@ namespace Popcorn.Utils
         // Availablity Request Structures
         // Note:  Windows defines the POWER_REQUEST_CONTEXT structure with an
         // internal union of SimpleReasonString and Detailed information.
-        // To avoid runtime interop issues, this version of 
-        // POWER_REQUEST_CONTEXT only supports SimpleReasonString.  
+        // To avoid runtime interop issues, this version of
+        // POWER_REQUEST_CONTEXT only supports SimpleReasonString.
         // To use the detailed information,
-        // define the PowerCreateRequest function with the first 
+        // define the PowerCreateRequest function with the first
         // parameter of type POWER_REQUEST_CONTEXT_DETAILED.
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         public struct POWER_REQUEST_CONTEXT
@@ -50,7 +50,8 @@ namespace Popcorn.Utils
             public UInt32 Version;
             public UInt32 Flags;
 
-            [MarshalAs(UnmanagedType.LPWStr)] public string
+            [MarshalAs(UnmanagedType.LPWStr)]
+            public string
                 SimpleReasonString;
         }
 
@@ -71,6 +72,6 @@ namespace Popcorn.Utils
             public PowerRequestContextDetailedInformation DetailedInformation;
         }
 
-        #endregion
+        #endregion prevent screensaver, display dimming and automatically sleeping
     }
 }

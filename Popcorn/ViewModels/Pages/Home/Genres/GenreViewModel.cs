@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using GalaSoft.MvvmLight.Threading;
 using NLog;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Models.Genres;
 using Popcorn.Services.Genres;
 using Popcorn.Services.User;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Genres
 {
@@ -46,7 +45,7 @@ namespace Popcorn.ViewModels.Pages.Home.Genres
         /// Disposed
         /// </summary>
         private bool _disposed;
-        
+
         /// <summary>
         /// Used to cancel loading genres
         /// </summary>

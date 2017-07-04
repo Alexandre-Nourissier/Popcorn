@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Popcorn.ViewModels.Pages.Home.Movie.Tabs;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using Popcorn.ViewModels.Pages.Home.Movie.Tabs;
 
 namespace Popcorn.UserControls.Home.Movie.Tabs
 {

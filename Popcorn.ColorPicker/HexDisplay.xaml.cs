@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Popcorn.ColorPicker
 {
@@ -20,17 +11,18 @@ namespace Popcorn.ColorPicker
     /// </summary>
     public partial class HexDisplay : UserControl
     {
-
         public enum EAlphaByteVisibility
         {
             visible,
-            hidden, 
+            hidden,
             auto //show if Alpha byte not ff
         }
+
         public static Type ClassType
         {
             get { return typeof(HexDisplay); }
         }
+
         public event EventHandler<EventArgs<Color>> ColorChanged;
 
         #region Color
@@ -38,7 +30,7 @@ namespace Popcorn.ColorPicker
         public static DependencyProperty ColorProperty = DependencyProperty.Register("Color", typeof(Color), ClassType,
              new FrameworkPropertyMetadata(Colors.Black, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnColorChanged));
 
-        [ Category("ColorPicker")]
+        [Category("ColorPicker")]
         public Color Color
         {
             get
@@ -64,20 +56,21 @@ namespace Popcorn.ColorPicker
 
             if (IsNumberSignIncludedInText)
             {
-                colorText="#";
+                colorText = "#";
             }
-           switch (AlphaByteVisibility )
-           {
-               case EAlphaByteVisibility.visible:
+            switch (AlphaByteVisibility)
+            {
+                case EAlphaByteVisibility.visible:
                     colorText += c.ToString().Substring(1);
-                   break;
-               case EAlphaByteVisibility.hidden :
-                    colorText += c.ToString().Substring(3);
-                   break;
-               case EAlphaByteVisibility.auto :
-                   break;
-           }
+                    break;
 
+                case EAlphaByteVisibility.hidden:
+                    colorText += c.ToString().Substring(3);
+                    break;
+
+                case EAlphaByteVisibility.auto:
+                    break;
+            }
 
             txtHex.Text = colorText;
             if (ColorChanged != null)
@@ -86,7 +79,7 @@ namespace Popcorn.ColorPicker
             }
         }
 
-        #endregion
+        #endregion Color
 
         #region Text
 
@@ -106,20 +99,19 @@ namespace Popcorn.ColorPicker
 
         private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var display = (HexDisplay) d;
-            var oldtext = (string) e.OldValue;
-            var newText = (String) e.NewValue;
-
+            var display = (HexDisplay)d;
+            var oldtext = (string)e.OldValue;
+            var newText = (String)e.NewValue;
         }
 
-        #endregion
+        #endregion Text
 
         #region IsNumberSignIncludedInText
 
-        public static DependencyProperty IsNumberSignIncludedInTextProperty = DependencyProperty.Register("IsNumberSignIncludedInText", typeof(bool), ClassType, 
+        public static DependencyProperty IsNumberSignIncludedInTextProperty = DependencyProperty.Register("IsNumberSignIncludedInText", typeof(bool), ClassType,
             new PropertyMetadata(false, OnIsNumberSignIncludedInTextChanged));
 
-         [Category("ColorPicker")]
+        [Category("ColorPicker")]
         public bool IsNumberSignIncludedInText
         {
             get
@@ -134,16 +126,16 @@ namespace Popcorn.ColorPicker
 
         private static void OnIsNumberSignIncludedInTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-
         }
 
-        #endregion
+        #endregion IsNumberSignIncludedInText
 
         #region AlphaByteVisibility
 
         public static DependencyProperty AlphaByteVisibilityProperty = DependencyProperty.Register("AlphaByteVisibility", typeof(EAlphaByteVisibility), ClassType,
             new PropertyMetadata(EAlphaByteVisibility.hidden, OnAlphaByteVisibilityChanged));
-         [Category("ColorPicker")]
+
+        [Category("ColorPicker")]
         public EAlphaByteVisibility AlphaByteVisibility
         {
             get
@@ -158,12 +150,9 @@ namespace Popcorn.ColorPicker
 
         private static void OnAlphaByteVisibilityChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-
         }
 
-        #endregion
-
-
+        #endregion AlphaByteVisibility
 
         public HexDisplay()
         {
@@ -191,7 +180,6 @@ namespace Popcorn.ColorPicker
             }
             catch (Exception)
             {
-
             }
         }
     }

@@ -1,7 +1,7 @@
-﻿using System.Windows;
+﻿using Popcorn.ViewModels.Dialogs;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using Popcorn.ViewModels.Dialogs;
 
 namespace Popcorn.Dialogs
 {

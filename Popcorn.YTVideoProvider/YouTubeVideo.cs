@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Popcorn.YTVideoProvider.Helpers;
+using System;
 using System.Threading.Tasks;
-using Popcorn.YTVideoProvider.Helpers;
 
 namespace Popcorn.YTVideoProvider
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.Windows.Media;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.CMYK
 {
@@ -16,23 +16,20 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
             Black = 3
         }
 
-
-        Color Color(double[] components)
+        private Color Color(double[] components)
         {
             return Color(components[0], components[1], components[2], components[3]);
         }
 
         public Color Color(double cyan, double magenta, double yellow, double black)
         {
-
             var red = (255 - cyan - black).RestrictToByte();
             var green = (255 - magenta - black).RestrictToByte();
             var blue = (255 - yellow - black).RestrictToByte();
             return System.Windows.Media.Color.FromRgb(red, green, blue);
-
         }
 
-        #endregion
+        #endregion Color
 
         #region components
 
@@ -83,7 +80,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
             return 255 - color.B - min * greedieness;
         }
 
-
         public Double YComponent(Color color)
         {
             var min = MinComponent(color);
@@ -96,13 +92,12 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
             return min * greedieness;
         }
 
-
         public Double KComponent(Color color)
         {
             var min = MinComponent(color);
             return min;
         }
 
-        #endregion
+        #endregion components
     }
 }

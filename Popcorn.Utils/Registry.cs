@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
+using System;
 
 namespace Popcorn.Utils
 {
@@ -24,7 +20,6 @@ namespace Popcorn.Utils
                 }
                 catch (NullReferenceException)
                 {
-
                 }
 
                 return registryValue;

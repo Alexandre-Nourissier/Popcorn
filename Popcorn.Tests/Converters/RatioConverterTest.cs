@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Ploeh.AutoFixture;
 using Popcorn.Converters;
 
@@ -25,7 +24,7 @@ namespace Popcorn.Tests.Converters
 
             var result = _converter.Convert(value, null, parameter, null);
 
-            Assert.AreEqual(result, value*parameter);
+            Assert.AreEqual(result, value * parameter);
             Assert.That(result, Is.TypeOf<double>());
         }
     }

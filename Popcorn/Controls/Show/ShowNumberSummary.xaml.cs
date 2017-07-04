@@ -36,7 +36,7 @@ namespace Popcorn.Controls.Show
         /// </summary>
         public double MaxNumberOfShows
         {
-            private get { return (double) GetValue(MaxNumberOfMoviesProperty); }
+            private get { return (double)GetValue(MaxNumberOfMoviesProperty); }
             set { SetValue(MaxNumberOfMoviesProperty, value); }
         }
 
@@ -45,7 +45,7 @@ namespace Popcorn.Controls.Show
         /// </summary>
         public double CurrentNumberOfShows
         {
-            private get { return (double) GetValue(CurrentNumberOfMoviesProperty); }
+            private get { return (double)GetValue(CurrentNumberOfMoviesProperty); }
             set { SetValue(CurrentNumberOfMoviesProperty, value); }
         }
 

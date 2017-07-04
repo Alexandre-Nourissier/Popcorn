@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using Popcorn.ColorPicker;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
-using Popcorn.ColorPicker;
 
 namespace Popcorn.ColorPickerControls.Dialogs
 {

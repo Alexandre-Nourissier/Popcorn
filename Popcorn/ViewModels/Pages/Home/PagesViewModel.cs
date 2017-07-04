@@ -1,8 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using Popcorn.Helpers;
 using Popcorn.ViewModels.Pages.Home.Movie;
 using Popcorn.ViewModels.Pages.Home.Show;
+using System.Collections.ObjectModel;
 
 namespace Popcorn.ViewModels.Pages.Home
 {
@@ -24,7 +24,7 @@ namespace Popcorn.ViewModels.Pages.Home
             get => _pages;
             private set { Set(() => Pages, ref _pages, value); }
         }
-        
+
         /// <summary>
         /// Create an instance of <see cref="PagesViewModel"/>
         /// </summary>

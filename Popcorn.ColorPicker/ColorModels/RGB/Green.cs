@@ -23,14 +23,14 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
             {
                 bitmap.Lock();
                 int currentPixel = -1;
-                byte* pStart = (byte*) (void*) bitmap.BackBuffer;
+                byte* pStart = (byte*)(void*)bitmap.BackBuffer;
                 for (int iRow = 0; iRow < bitmap.PixelHeight; iRow++)
                 {
                     for (int iCol = 0; iCol < bitmap.PixelWidth; iCol++)
                     {
                         currentPixel++;
                         *(pStart + currentPixel * 3 + 0) = color.B; //Blue
-                        *(pStart + currentPixel * 3 + 1) = (byte) (255 - iRow); //Green 
+                        *(pStart + currentPixel * 3 + 1) = (byte)(255 - iRow); //Green
                         *(pStart + currentPixel * 3 + 2) = color.R; //red
                     }
                 }
@@ -46,15 +46,15 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
             {
                 bitmap.Lock();
                 int currentPixel = -1;
-                byte* pStart = (byte*) (void*) bitmap.BackBuffer;
+                byte* pStart = (byte*)(void*)bitmap.BackBuffer;
                 for (int iRow = 0; iRow < bitmap.PixelHeight; iRow++)
                 {
                     for (int iCol = 0; iCol < bitmap.PixelWidth; iCol++)
                     {
                         currentPixel++;
-                        *(pStart + currentPixel * 3 + 0) = (byte) (iCol); //Blue
-                        *(pStart + currentPixel * 3 + 1) = (byte) normalComponentValue; //Green 
-                        *(pStart + currentPixel * 3 + 2) = (byte) (255 - iRow); //red
+                        *(pStart + currentPixel * 3 + 0) = (byte)(iCol); //Blue
+                        *(pStart + currentPixel * 3 + 1) = (byte)normalComponentValue; //Green
+                        *(pStart + currentPixel * 3 + 2) = (byte)(255 - iRow); //red
                     }
                 }
                 bitmap.AddDirtyRect(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
@@ -64,9 +64,9 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
 
         public override Color ColorAtPoint(Point selectionPoint, int colorComponentValue)
         {
-            var blue = (byte) Math.Round(selectionPoint.X);
-            var green = (byte) colorComponentValue;
-            var red = (byte) Math.Round(255 - selectionPoint.Y);
+            var blue = (byte)Math.Round(selectionPoint.X);
+            var green = (byte)colorComponentValue;
+            var red = (byte)Math.Round(255 - selectionPoint.Y);
             return Color.FromRgb(red, green, blue);
         }
 

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Media;
 
 namespace Popcorn.ColorPicker.ColorModels.RGB
 {
-    class RGBModel : ColorModel
+    internal class RGBModel : ColorModel
     {
         public enum EComponents
         {

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker
 {
@@ -24,9 +24,10 @@ namespace Popcorn.ColorPicker
 
         #region NewColor
 
-        public static DependencyProperty NewColorProperty = DependencyProperty.Register("NewColor", typeof(Color), ClassType, 
+        public static DependencyProperty NewColorProperty = DependencyProperty.Register("NewColor", typeof(Color), ClassType,
             new FrameworkPropertyMetadata(Colors.Gray, new PropertyChangedCallback(OnNewColorChanged)));
-         [Category("ColorPicker")]
+
+        [Category("ColorPicker")]
         public Color NewColor
         {
             get
@@ -43,20 +44,19 @@ namespace Popcorn.ColorPicker
         {
             var nc = (NewCurrent)d;
             nc.rNew.Fill = new SolidColorBrush(((Color)e.NewValue).WithAlpha(nc.Alpha));
-
         }
 
-        #endregion
+        #endregion NewColor
 
         #region CurrentColor
 
-        public static DependencyProperty CurrentColorProperty = DependencyProperty.Register("CurrentColor", typeof(Color), ClassType, 
+        public static DependencyProperty CurrentColorProperty = DependencyProperty.Register("CurrentColor", typeof(Color), ClassType,
             new FrameworkPropertyMetadata(Colors.Black, new PropertyChangedCallback(OnCurrentColorChanged)));
 
         /// <summary>
-        /// The color being selected 
+        /// The color being selected
         /// </summary>
-         [Category("ColorPicker")]
+        [Category("ColorPicker")]
         public Color CurrentColor
         {
             get
@@ -71,19 +71,20 @@ namespace Popcorn.ColorPicker
 
         private static void OnCurrentColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var nc = (NewCurrent) d;
-            nc.rCurrent.Fill = new SolidColorBrush((Color) e.NewValue);
+            var nc = (NewCurrent)d;
+            nc.rCurrent.Fill = new SolidColorBrush((Color)e.NewValue);
         }
 
-        #endregion
+        #endregion CurrentColor
 
         #region Alpha
 
         public static DependencyProperty AlphaProperty = DependencyProperty.Register("Alpha", typeof(byte), ClassType, new PropertyMetadata((byte)255, new PropertyChangedCallback(OnAlphaChanged)));
+
         /// <summary>
         /// The Alpha Component of the currrent color
         /// </summary>
-          [Category("ColorPicker")]
+        [Category("ColorPicker")]
         public byte Alpha
         {
             get
@@ -102,21 +103,21 @@ namespace Popcorn.ColorPicker
             nc.rNew.Fill = new SolidColorBrush(nc.NewColor.WithAlpha(Convert.ToByte(e.NewValue)));
         }
 
-        #endregion
+        #endregion Alpha
 
         //public bool ShowLabels { get; set; }
 
         #region orientation
-        
+
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register("Orientation", typeof(Orientation), typeof(NewCurrent),
             new FrameworkPropertyMetadata(Orientation.Vertical, FrameworkPropertyMetadataOptions.AffectsMeasure, OnOrientationChanged));
 
         private static void OnOrientationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var or = (Orientation) e.NewValue ;
+            var or = (Orientation)e.NewValue;
             if (or != (Orientation)e.OldValue)
             {
-                var newCurrent = (NewCurrent) d;
+                var newCurrent = (NewCurrent)d;
                 if (or == Orientation.Horizontal)
                 {
                     newCurrent.SetOrientationToHorizontal();
@@ -126,9 +127,8 @@ namespace Popcorn.ColorPicker
                     newCurrent.SetOrientationToVertical();
                 }
             }
-
-
         }
+
         private void SetOrientationToHorizontal()
         {
             var star = new GridLength(50, GridUnitType.Star);
@@ -142,12 +142,11 @@ namespace Popcorn.ColorPicker
             LayoutRoot.RowDefinitions[2].Height = auto;
             LayoutRoot.RowDefinitions[3].Height = auto;
 
-            tbCurrent.SetValue(Grid.RowProperty ,  0);
-            tbCurrent.SetValue(Grid.ColumnProperty , 0);
+            tbCurrent.SetValue(Grid.RowProperty, 0);
+            tbCurrent.SetValue(Grid.ColumnProperty, 0);
 
-            tbNew.SetValue(Grid.RowProperty,0);
+            tbNew.SetValue(Grid.RowProperty, 0);
             tbNew.SetValue(Grid.ColumnProperty, 1);
-
 
             rNew.SetValue(Grid.RowProperty, 1);
             rNew.SetValue(Grid.ColumnProperty, 1);
@@ -173,7 +172,6 @@ namespace Popcorn.ColorPicker
             LayoutRoot.RowDefinitions[2].Height = star;
             LayoutRoot.RowDefinitions[3].Height = auto;
 
-           
             tbNew.SetValue(Grid.RowProperty, 0);
             tbNew.SetValue(Grid.ColumnProperty, 0);
 
@@ -187,24 +185,17 @@ namespace Popcorn.ColorPicker
             rCurrentBG.SetValue(Grid.RowProperty, 2);
             rCurrentBG.SetValue(Grid.ColumnProperty, 0);
 
-
             tbCurrent.SetValue(Grid.RowProperty, 3);
             tbCurrent.SetValue(Grid.ColumnProperty, 0);
-        
-        
-
-
         }
 
         [Category("ColorPicker")]
         public Orientation Orientation
         {
-            get { return (Orientation) GetValue(OrientationProperty); }
+            get { return (Orientation)GetValue(OrientationProperty); }
             set { SetValue(OrientationProperty, value); }
         }
 
-#endregion
-
-
+        #endregion orientation
     }
 }

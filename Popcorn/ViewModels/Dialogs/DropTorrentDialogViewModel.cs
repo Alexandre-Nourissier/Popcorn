@@ -1,10 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Messaging;
@@ -12,6 +6,12 @@ using Popcorn.Models.Bandwidth;
 using Popcorn.Models.Media;
 using Popcorn.Services.Download;
 using Popcorn.Utils;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Popcorn.ViewModels.Dialogs
 {

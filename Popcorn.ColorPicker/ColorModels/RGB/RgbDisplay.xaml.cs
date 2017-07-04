@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -6,7 +7,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.RGB
 {
@@ -43,7 +43,6 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
             g = c => c.G.ToString();
             b = c => c.B.ToString();
 
-
             setR = (c, newR) => c.WithR(newR);
             setG = (c, newG) => c.WithG(newG);
             setB = (c, newB) => c.WithB(newB);
@@ -57,7 +56,6 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
 
         public event EventHandler<EventArgs<NormalComponent>> ColorComponentChanged;
 
-
         #region DisplayMode
 
         public static DependencyProperty DisplayModeProperty = DependencyProperty.Register("DisplayMode",
@@ -66,16 +64,15 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
         [Category("ColorPicker")]
         public EDisplayMode DisplayMode
         {
-            get { return (EDisplayMode) GetValue(DisplayModeProperty); }
+            get { return (EDisplayMode)GetValue(DisplayModeProperty); }
             set { SetValue(DisplayModeProperty, value); }
         }
 
         private static void OnDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var display = (RgbDisplay) d;
-            var displayMode = (EDisplayMode) e.NewValue;
+            var display = (RgbDisplay)d;
+            var displayMode = (EDisplayMode)e.NewValue;
             display.OnDisplayModeChanged(displayMode);
-
         }
 
         private void OnDisplayModeChanged(EDisplayMode displayMode)
@@ -96,6 +93,7 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
                     setB = (c, newB) => c.WithB(newB);
 
                     break;
+
                 case EDisplayMode.PercentNoDecimal:
                     txtRUnit.Text = "%";
                     txtGUnit.Text = "%";
@@ -109,7 +107,6 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
                     setG = (c, newG) => c.WithG(FromPercent(newG));
                     setB = (c, newB) => c.WithB(FromPercent(newB));
                     break;
-
             }
             processEvents = false;
             txtR.Text = r(Color);
@@ -118,7 +115,7 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
             processEvents = true;
         }
 
-        #endregion
+        #endregion DisplayMode
 
         #region Color
 
@@ -129,20 +126,19 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var c = (Color) e.NewValue;
-            var rd = (RgbDisplay) d;
+            var c = (Color)e.NewValue;
+            var rd = (RgbDisplay)d;
             rd.OnColorChanged(c);
         }
 
         private void OnColorChanged(Color c)
         {
-
             processEvents = false;
             txtR.Text = r(c);
             txtG.Text = g(c);
@@ -154,8 +150,7 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
             }
         }
 
-        #endregion
-
+        #endregion Color
 
         #region NormalComponent
 
@@ -167,7 +162,7 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
         [Category("ColorPicker")]
         public NormalComponent NormalComponent
         {
-            get { return (NormalComponent) GetValue(NormalComponentProperty); }
+            get { return (NormalComponent)GetValue(NormalComponentProperty); }
             set { SetValue(NormalComponentProperty, value); }
         }
 
@@ -175,8 +170,8 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
         {
             try
             {
-                var cp = (NormalComponent) e.NewValue;
-                var rd = (RgbDisplay) d;
+                var cp = (NormalComponent)e.NewValue;
+                var rd = (RgbDisplay)d;
                 rd.OnColorComponentChanged(cp);
             }
             catch
@@ -184,11 +179,10 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
             }
         }
 
-        #endregion
+        #endregion NormalComponent
 
         private void OnColorComponentChanged(NormalComponent colorPlaneColorComponent)
         {
-
             if (colorPlaneColorComponent.Name == "RGB_Red")
             {
                 rR.IsChecked = true;
@@ -268,7 +262,7 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
                 Debug.WriteLine(ex.Message);
             }
         }
-        
+
         private void txtR_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (processEvents)
@@ -286,7 +280,7 @@ namespace Popcorn.ColorPicker.ColorModels.RGB
 
         public static byte FromPercent(int percent)
         {
-            return Convert.ToByte((double) percent / 100 * 255);
+            return Convert.ToByte((double)percent / 100 * 255);
         }
     }
 }

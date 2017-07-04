@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Async;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Popcorn.Comparers;
 using Popcorn.Helpers;
@@ -13,6 +7,12 @@ using Popcorn.Models.Movie;
 using Popcorn.Services.Application;
 using Popcorn.Services.Movies.Movie;
 using Popcorn.Services.User;
+using System;
+using System.Collections.Async;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Movie.Tabs
 {
@@ -97,7 +97,7 @@ namespace Popcorn.ViewModels.Pages.Home.Movie.Tabs
                     foreach (var movie in updatedMovies.Except(Movies.ToList(), new MovieComparer()))
                     {
                         var pair = Movies
-                            .Select((value, index) => new {value, index})
+                            .Select((value, index) => new { value, index })
                             .FirstOrDefault(x => string.CompareOrdinal(x.value.Title, movie.Title) > 0);
 
                         if (pair == null)

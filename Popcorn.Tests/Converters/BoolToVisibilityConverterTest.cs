@@ -1,6 +1,6 @@
-﻿using System.Windows;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Popcorn.Converters;
+using System.Windows;
 
 namespace Popcorn.Tests.Converters
 {
@@ -19,7 +19,7 @@ namespace Popcorn.Tests.Converters
         public void Convert_False_ReturnsVisible()
         {
             Assert.AreEqual(
-                _converter.Convert(false, typeof (Visibility), null, null), Visibility.Visible);
+                _converter.Convert(false, typeof(Visibility), null, null), Visibility.Visible);
         }
 
         [Test]

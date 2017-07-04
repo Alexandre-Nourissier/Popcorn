@@ -1,9 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Threading;
 using NLog;
@@ -12,6 +7,11 @@ using Popcorn.Models.Localization;
 using Popcorn.Services.Subtitles;
 using Popcorn.Services.User;
 using Popcorn.Utils;
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Popcorn.ViewModels.Windows.Settings
 {
@@ -134,7 +134,7 @@ namespace Popcorn.ViewModels.Windows.Settings
                 });
             }
         }
-        
+
         /// <summary>
         /// Default subtitle language
         /// </summary>

@@ -91,7 +91,6 @@
                             Fill="{StaticResource HorizontalSliderThumbShadeGradient}"
                             Stroke="{StaticResource HorizontalSliderThumbBorder}"
                             StrokeThickness="1" />
-
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -358,7 +357,6 @@
                             Fill="{StaticResource VerticalSliderThumbShadeGradient}"
                             Stroke="{x:Null}"
                             StrokeThickness="1" />
-
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true" />
@@ -441,7 +439,6 @@
                             Fill="{StaticResource VerticalSliderThumbShadeGradientInverted}"
                             Stroke="{StaticResource VerticalSliderThumbBorderInverted}"
                             StrokeThickness="1" />
-
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -506,7 +503,6 @@
                             Fill="{StaticResource VerticalSliderThumbShadeGradient}"
                             Stroke="{StaticResource VerticalSliderThumbBorder}"
                             StrokeThickness="1" />
-
                     </Canvas>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">

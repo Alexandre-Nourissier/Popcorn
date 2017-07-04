@@ -1,9 +1,5 @@
-﻿using System;
+﻿using RestSharp.Deserializers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RestSharp.Deserializers;
 
 namespace Popcorn.Models.Genres
 {

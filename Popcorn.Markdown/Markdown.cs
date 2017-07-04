@@ -22,8 +22,8 @@ namespace Popcorn.Markdown
         private const int _nestDepth = 6;
 
         /// <summary>
-        /// Tabs are automatically converted to spaces as part of the transform  
-        /// this constant determines how "wide" those tabs become in spaces  
+        /// Tabs are automatically converted to spaces as part of the transform
+        /// this constant determines how "wide" those tabs become in spaces
         /// </summary>
         private const int _tabWidth = 4;
 
@@ -33,10 +33,10 @@ namespace Popcorn.Markdown
         private int _listLevel;
 
         /// <summary>
-        /// when true, bold and italic require non-word characters on either side  
+        /// when true, bold and italic require non-word characters on either side
         /// WARNING: this is a significant deviation from the markdown spec
         /// </summary>
-        /// 
+        ///
         public bool StrictBoldItalic { get; set; }
 
         public ICommand HyperlinkCommand { get; set; }
@@ -90,7 +90,7 @@ namespace Popcorn.Markdown
         // Using a DependencyProperty as the backing store for Heading4Style.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty Heading4StyleProperty =
             DependencyProperty.Register("Heading4Style", typeof(Style), typeof(Markdown), new PropertyMetadata(null));
-    
+
         public Style CodeStyle
         {
             get { return (Style)GetValue(CodeStyleProperty); }
@@ -133,8 +133,8 @@ namespace Popcorn.Markdown
 
         public string AssetPathRoot
         {
-          get { return (string)GetValue(AssetPathRootProperty); }
-          set { SetValue(AssetPathRootProperty, value); }
+            get { return (string)GetValue(AssetPathRootProperty); }
+            set { SetValue(AssetPathRootProperty, value); }
         }
 
         public static readonly DependencyProperty AssetPathRootProperty =
@@ -235,7 +235,7 @@ namespace Popcorn.Markdown
         private static Regex _leadingWhitespace = new Regex(@"^[ ]*", RegexOptions.Compiled);
 
         /// <summary>
-        /// splits on two or more newlines, to form "paragraphs";    
+        /// splits on two or more newlines, to form "paragraphs";
         /// </summary>
         private IEnumerable<Block> FormParagraphs(string text)
         {
@@ -256,7 +256,7 @@ namespace Popcorn.Markdown
         private static string _nestedBracketsPattern;
 
         /// <summary>
-        /// Reusable pattern to match balanced [brackets]. See Friedl's 
+        /// Reusable pattern to match balanced [brackets]. See Friedl's
         /// "Mastering Regular Expressions", 2nd Ed., pp. 328-331.
         /// </summary>
         private static string GetNestedBracketsPattern()
@@ -280,7 +280,7 @@ namespace Popcorn.Markdown
         private static string _nestedParensPattern;
 
         /// <summary>
-        /// Reusable pattern to match balanced (parens). See Friedl's 
+        /// Reusable pattern to match balanced (parens). See Friedl's
         /// "Mastering Regular Expressions", 2nd Ed., pp. 328-331.
         /// </summary>
         private static string GetNestedParensPattern()
@@ -304,7 +304,7 @@ namespace Popcorn.Markdown
         private static string _nestedParensPatternWithWhiteSpace;
 
         /// <summary>
-        /// Reusable pattern to match balanced (parens), including whitespace. See Friedl's 
+        /// Reusable pattern to match balanced (parens), including whitespace. See Friedl's
         /// "Mastering Regular Expressions", 2nd Ed., pp. 328-331.
         /// </summary>
         private static string GetNestedParensPatternWithWhiteSpace()
@@ -367,7 +367,7 @@ namespace Popcorn.Markdown
         /// Turn Markdown images into images
         /// </summary>
         /// <remarks>
-        /// ![image alt](url) 
+        /// ![image alt](url)
         /// </remarks>
         private IEnumerable<Inline> DoImages(string text, Func<string, IEnumerable<Inline>> defaultHandler)
         {
@@ -441,7 +441,7 @@ namespace Popcorn.Markdown
         /// Turn Markdown link shortcuts into hyperlinks
         /// </summary>
         /// <remarks>
-        /// [link text](url "title") 
+        /// [link text](url "title")
         /// </remarks>
         private IEnumerable<Inline> DoAnchors(string text, Func<string, IEnumerable<Inline>> defaultHandler)
         {
@@ -498,17 +498,17 @@ namespace Popcorn.Markdown
         /// Turn Markdown headers into HTML header tags
         /// </summary>
         /// <remarks>
-        /// Header 1  
-        /// ========  
-        /// 
-        /// Header 2  
-        /// --------  
-        /// 
-        /// # Header 1  
-        /// ## Header 2  
-        /// ## Header 2 with closing hashes ##  
-        /// ...  
-        /// ###### Header 6  
+        /// Header 1
+        /// ========
+        ///
+        /// Header 2
+        /// --------
+        ///
+        /// # Header 1
+        /// ## Header 2
+        /// ## Header 2 with closing hashes ##
+        /// ...
+        /// ###### Header 6
         /// </remarks>
         private IEnumerable<Block> DoHeaders(string text, Func<string, IEnumerable<Block>> defaultHandler)
         {
@@ -605,8 +605,8 @@ namespace Popcorn.Markdown
         /// Turn Markdown horizontal rules into HTML hr tags
         /// </summary>
         /// <remarks>
-        /// ***  
-        /// * * *  
+        /// ***
+        /// * * *
         /// ---
         /// - - -
         /// </remarks>
@@ -635,7 +635,7 @@ namespace Popcorn.Markdown
             }
             else
             {
-              line.Style = SeparatorStyle;
+                line.Style = SeparatorStyle;
             }
 
             var container = new BlockUIContainer(line);
@@ -745,7 +745,7 @@ namespace Popcorn.Markdown
                 (^[ ]*)                    # leading whitespace = $2
                 ({0}) [ ]+                 # list marker = $3
                 ((?s:.+?)                  # list item text = $4
-                (\n{{1,2}}))      
+                (\n{{1,2}}))
                 (?= \n* (\z | \2 ({0}) [ ]+))", marker);
 
                 var regex = new Regex(pattern, RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline);
@@ -818,7 +818,7 @@ namespace Popcorn.Markdown
             //
             //        Turns to:
             //
-            //          ... type <code>`bar`</code> ...         
+            //          ... type <code>`bar`</code> ...
             //
 
             return Evaluate(text, _codeSpan, CodeSpanEvaluator, defaultHandler);
@@ -846,11 +846,13 @@ namespace Popcorn.Markdown
 
         private static Regex _bold = new Regex(@"(\*\*|__) (?=\S) (.+?[*_]*) (?<=\S) \1",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
+
         private static Regex _strictBold = new Regex(@"([\W_]|^) (\*\*|__) (?=\S) ([^\r]*?\S[\*_]*) \2 ([\W_]|$)",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
         private static Regex _italic = new Regex(@"(\*|_) (?=\S) (.+?) (?<=\S) \1",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
+
         private static Regex _strictItalic = new Regex(@"([\W_]|^) (\*|_) (?=\S) ([^\r\*_]*?\S) \2 ([\W_]|$)",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.Singleline | RegexOptions.Compiled);
 
@@ -912,9 +914,9 @@ namespace Popcorn.Markdown
         }
 
         /// <summary>
-        /// convert all tabs to _tabWidth spaces; 
-        /// standardizes line endings from DOS (CR LF) or Mac (CR) to UNIX (LF); 
-        /// makes sure text ends with a couple of newlines; 
+        /// convert all tabs to _tabWidth spaces;
+        /// standardizes line endings from DOS (CR LF) or Mac (CR) to UNIX (LF);
+        /// makes sure text ends with a couple of newlines;
         /// removes any blank lines (only spaces) in the text
         /// </summary>
         private string Normalize(string text)
@@ -939,6 +941,7 @@ namespace Popcorn.Markdown
                         line.Length = 0;
                         valid = false;
                         break;
+
                     case '\r':
                         if ((i < text.Length - 1) && (text[i + 1] != '\n'))
                         {
@@ -949,13 +952,16 @@ namespace Popcorn.Markdown
                             valid = false;
                         }
                         break;
+
                     case '\t':
                         int width = (_tabWidth - line.Length % _tabWidth);
                         for (int k = 0; k < width; k++)
                             line.Append(' ');
                         break;
+
                     case '\x1A':
                         break;
+
                     default:
                         if (!valid && text[i] != ' ')
                             valid = true;

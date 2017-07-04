@@ -1,24 +1,24 @@
-﻿using System;
-using System.Globalization;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
-using System.Windows.Media.Animation;
-using System.Windows.Threading;
-using GalaSoft.MvvmLight.Threading;
-using Popcorn.ViewModels.Pages.Player;
-using System.Threading;
-using System.Windows.Media;
-using GalaSoft.MvvmLight.Ioc;
+﻿using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Threading;
 using NLog;
 using Popcorn.Messaging;
 using Popcorn.Models.Bandwidth;
 using Popcorn.Services.Application;
 using Popcorn.Utils;
 using Popcorn.Utils.Exceptions;
+using Popcorn.ViewModels.Pages.Player;
 using Popcorn.ViewModels.Windows.Settings;
+using System;
+using System.Globalization;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace Popcorn.UserControls.Player
 {
@@ -122,7 +122,7 @@ namespace Popcorn.UserControls.Player
         /// </summary>
         public int Volume
         {
-            get => (int) GetValue(VolumeProperty);
+            get => (int)GetValue(VolumeProperty);
 
             set => SetValue(VolumeProperty, value);
         }
@@ -154,12 +154,12 @@ namespace Popcorn.UserControls.Player
 
             vm.SubtitleChosen += OnSubtitleChosen;
             // start the timer used to report time on MediaPlayerSliderProgress
-            MediaPlayerTimer = new DispatcherTimer {Interval = TimeSpan.FromMilliseconds(200)};
+            MediaPlayerTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(200) };
             MediaPlayerTimer.Tick += MediaPlayerTimerTick;
             MediaPlayerTimer.Start();
 
             // start the activity timer used to manage visibility of the PlayerStatusBar
-            ActivityTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(2)};
+            ActivityTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
             ActivityTimer.Tick += OnInactivity;
             ActivityTimer.Start();
 
@@ -295,6 +295,7 @@ namespace Popcorn.UserControls.Player
                         SubtitleDelay += 100000;
                     }
                     break;
+
                 case Key.G:
                     if ((Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
                     {
@@ -305,6 +306,7 @@ namespace Popcorn.UserControls.Player
                         SubtitleDelay -= 100000;
                     }
                     break;
+
                 default:
                     return;
             }
@@ -414,7 +416,7 @@ namespace Popcorn.UserControls.Player
             if (moviePlayer == null)
                 return;
 
-            var newVolume = (int) e.NewValue;
+            var newVolume = (int)e.NewValue;
             moviePlayer.ChangeMediaVolume(newVolume);
         }
 

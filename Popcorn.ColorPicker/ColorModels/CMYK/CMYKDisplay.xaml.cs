@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.CMYK
 {
@@ -64,20 +57,19 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
             new FrameworkPropertyMetadata(Colors.Black, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
                 OnColorChanged));
 
-
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var color = (Color) e.NewValue;
-            var display = (CMYKDisplay) d;
+            var color = (Color)e.NewValue;
+            var display = (CMYKDisplay)d;
 
-            if ((Color) e.NewValue != (Color) e.OldValue && display.setColor != color)
+            if ((Color)e.NewValue != (Color)e.OldValue && display.setColor != color)
             {
                 display.OnColorChanged(color);
             }
@@ -92,7 +84,7 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
             }
         }
 
-        #endregion
+        #endregion Color
 
         #region DisplayMode
 
@@ -113,16 +105,15 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
         [Category("ColorPicker")]
         public EDisplayMode DisplayMode
         {
-            get { return (EDisplayMode) GetValue(DisplayModeProperty); }
+            get { return (EDisplayMode)GetValue(DisplayModeProperty); }
             set { SetValue(DisplayModeProperty, value); }
         }
 
         private static void OnDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var display = (CMYKDisplay) d;
-            var displayMode = (EDisplayMode) e.NewValue;
+            var display = (CMYKDisplay)d;
+            var displayMode = (EDisplayMode)e.NewValue;
             display.OnDisplayModeChanged(displayMode);
-
         }
 
         private void OnDisplayModeChanged(EDisplayMode displayMode)
@@ -139,6 +130,7 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
                     y = color => sModel.YComponent(color, KGreedieness).ToString(YellowFormat);
                     k = color => sModel.KComponent(color, KGreedieness).ToString(BlackFormat);
                     break;
+
                 case EDisplayMode.PercentNoDecimal:
                     txtCUnit.Text = "%";
                     txtMUnit.Text = "%";
@@ -150,13 +142,10 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
                     y = color => sModel.YComponent(color, KGreedieness).PercentageOf(255).ToString(YellowFormat);
                     k = color => sModel.KComponent(color, KGreedieness).PercentageOf(255).ToString(BlackFormat);
                     break;
-
             }
         }
 
-
-        #endregion
-
+        #endregion DisplayMode
 
         #region KGreedieness
 
@@ -167,33 +156,27 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
         [Category("ColorPicker")]
         public double KGreedieness
         {
-            get { return (double) GetValue(KGreedienessProperty); }
+            get { return (double)GetValue(KGreedienessProperty); }
             set { SetValue(KGreedienessProperty, value); }
         }
 
         private static object CoerceKGreedieness(DependencyObject d, object value)
         {
-
             return value;
-
         }
 
         private static void OnKGreedienessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-
         }
 
-        #endregion
-
+        #endregion KGreedieness
 
         public event EventHandler<EventArgs<Color>> ColorChanged;
-
 
         private void txtR_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = NumbersOnly(e.Text);
             base.OnPreviewTextInput(e);
-
         }
 
         private bool NumbersOnly(string text)
@@ -201,7 +184,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
             String okChars = "0123456789";
             return text.ToCharArray().All(c => okChars.IndexOf(c) == -1);
         }
-
 
         private void TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -216,7 +198,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
                 catch
                 {
                 }
-
             }
         }
     }

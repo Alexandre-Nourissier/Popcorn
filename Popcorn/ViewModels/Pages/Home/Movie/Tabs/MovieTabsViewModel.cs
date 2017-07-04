@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Async;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using NLog;
@@ -18,6 +11,13 @@ using Popcorn.Models.Movie;
 using Popcorn.Services.Application;
 using Popcorn.Services.Movies.Movie;
 using Popcorn.Services.User;
+using System;
+using System.Collections.Async;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Movie.Tabs
 {
@@ -408,7 +408,7 @@ namespace Popcorn.ViewModels.Pages.Home.Movie.Tabs
             ChangeMovieGenreCommand =
                 new RelayCommand<GenreJson>(genre =>
                 {
-                    if(genre.Name == LocalizationProviderHelper.GetLocalizedValue<string>(
+                    if (genre.Name == LocalizationProviderHelper.GetLocalizedValue<string>(
                            "AllLabel"))
                     {
                         Genre = null;

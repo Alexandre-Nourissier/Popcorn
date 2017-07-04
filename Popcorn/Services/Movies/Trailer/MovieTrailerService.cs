@@ -1,13 +1,13 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using NLog;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Models.Movie;
 using Popcorn.Services.Movies.Movie;
 using Popcorn.Utils.Exceptions;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Popcorn.Services.Movies.Trailer
 {

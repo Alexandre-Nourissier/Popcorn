@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Popcorn.AttachedProperties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -7,7 +8,6 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Popcorn.AttachedProperties;
 
 namespace Popcorn.Controls
 {
@@ -94,7 +94,7 @@ namespace Popcorn.Controls
 
         public Brush Feedback
         {
-            get { return (Brush) GetValue(FeedbackProperty); }
+            get { return (Brush)GetValue(FeedbackProperty); }
             set { SetValue(FeedbackProperty, value); }
         }
 
@@ -146,7 +146,7 @@ namespace Popcorn.Controls
 
         public double RippleSize
         {
-            get { return (double) GetValue(RippleSizeProperty); }
+            get { return (double)GetValue(RippleSizeProperty); }
             private set { SetValue(RippleSizePropertyKey, value); }
         }
 
@@ -160,7 +160,7 @@ namespace Popcorn.Controls
 
         public double RippleX
         {
-            get { return (double) GetValue(RippleXProperty); }
+            get { return (double)GetValue(RippleXProperty); }
             private set { SetValue(RippleXPropertyKey, value); }
         }
 
@@ -174,25 +174,25 @@ namespace Popcorn.Controls
 
         public double RippleY
         {
-            get { return (double) GetValue(RippleYProperty); }
+            get { return (double)GetValue(RippleYProperty); }
             private set { SetValue(RippleYPropertyKey, value); }
         }
 
         /// <summary>
-        ///   The DependencyProperty for the RecognizesAccessKey property. 
-        ///   Default Value: false 
-        /// </summary> 
+        ///   The DependencyProperty for the RecognizesAccessKey property.
+        ///   Default Value: false
+        /// </summary>
         public static readonly DependencyProperty RecognizesAccessKeyProperty =
             DependencyProperty.Register(
                 nameof(RecognizesAccessKey), typeof(bool), typeof(Ripple),
                 new PropertyMetadata(default(bool)));
 
-        /// <summary> 
+        /// <summary>
         ///   Determine if Ripple should use AccessText in its style
-        /// </summary> 
+        /// </summary>
         public bool RecognizesAccessKey
         {
-            get { return (bool) GetValue(RecognizesAccessKeyProperty); }
+            get { return (bool)GetValue(RecognizesAccessKeyProperty); }
             set { SetValue(RecognizesAccessKeyProperty, value); }
         }
 

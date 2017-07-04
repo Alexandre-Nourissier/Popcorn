@@ -1,9 +1,9 @@
-﻿using System;
+﻿using MahApps.Metro.Controls.Dialogs;
+using Popcorn.Helpers;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using MahApps.Metro.Controls.Dialogs;
-using Popcorn.Helpers;
 
 namespace Popcorn.Dialogs
 {
@@ -61,26 +61,26 @@ namespace Popcorn.Dialogs
         /// Message property
         /// </summary>
         public static readonly DependencyProperty MessageProperty = DependencyProperty.Register("Message",
-            typeof (string), typeof (UpdateDialog), new PropertyMetadata(default(string)));
+            typeof(string), typeof(UpdateDialog), new PropertyMetadata(default(string)));
 
         /// <summary>
         /// Releases notes property
         /// </summary>
         public static readonly DependencyProperty ReleaseNotesProperty = DependencyProperty.Register("ReleaseNotes",
-            typeof (string), typeof (UpdateDialog), new PropertyMetadata(default(string)));
+            typeof(string), typeof(UpdateDialog), new PropertyMetadata(default(string)));
 
         /// <summary>
         /// Restart button text property
         /// </summary>
         public static readonly DependencyProperty RestartButtonTextProperty =
-            DependencyProperty.Register("RestartButtonText", typeof (string), typeof (UpdateDialog),
+            DependencyProperty.Register("RestartButtonText", typeof(string), typeof(UpdateDialog),
                 new PropertyMetadata(LocalizationProviderHelper.GetLocalizedValue<string>("NowLabel")));
 
         /// <summary>
         /// Later button text property
         /// </summary>
         public static readonly DependencyProperty LaterButtonTextProperty =
-            DependencyProperty.Register("LaterButtonText", typeof (string), typeof (UpdateDialog),
+            DependencyProperty.Register("LaterButtonText", typeof(string), typeof(UpdateDialog),
                 new PropertyMetadata(LocalizationProviderHelper.GetLocalizedValue<string>("LaterLabel")));
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Popcorn.Dialogs
         /// </summary>
         public string Message
         {
-            get { return (string) GetValue(MessageProperty); }
+            get { return (string)GetValue(MessageProperty); }
             set { SetValue(MessageProperty, value); }
         }
 
@@ -109,7 +109,7 @@ namespace Popcorn.Dialogs
         /// </summary>
         public string ReleaseNotes
         {
-            get { return (string) GetValue(ReleaseNotesProperty); }
+            get { return (string)GetValue(ReleaseNotesProperty); }
             set { SetValue(ReleaseNotesProperty, value); }
         }
 
@@ -118,7 +118,7 @@ namespace Popcorn.Dialogs
         /// </summary>
         public string RestartButtonText
         {
-            get { return (string) GetValue(RestartButtonTextProperty); }
+            get { return (string)GetValue(RestartButtonTextProperty); }
             set { SetValue(RestartButtonTextProperty, value); }
         }
 
@@ -127,7 +127,7 @@ namespace Popcorn.Dialogs
         /// </summary>
         public string LaterButtonText
         {
-            get { return (string) GetValue(LaterButtonTextProperty); }
+            get { return (string)GetValue(LaterButtonTextProperty); }
             set { SetValue(LaterButtonTextProperty, value); }
         }
 
@@ -248,9 +248,11 @@ namespace Popcorn.Dialogs
                     PART_RestartButton.Style = FindResource("AccentedDialogHighlightedSquareButton") as Style;
                     PART_LaterButton.Style = FindResource("AccentedDialogHighlightedSquareButton") as Style;
                     break;
+
                 case MetroDialogColorScheme.Theme:
                 case MetroDialogColorScheme.Inverted:
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }

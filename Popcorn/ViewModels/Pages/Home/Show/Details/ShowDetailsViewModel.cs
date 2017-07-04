@@ -1,15 +1,15 @@
-﻿using System.Diagnostics;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using NLog;
 using Popcorn.Messaging;
-using Popcorn.Models.Shows;
-using Popcorn.ViewModels.Pages.Home.Show.Download;
-using Popcorn.Services.Subtitles;
-using Popcorn.Services.Download;
 using Popcorn.Models.Episode;
+using Popcorn.Models.Shows;
+using Popcorn.Services.Download;
 using Popcorn.Services.Shows.Trailer;
+using Popcorn.Services.Subtitles;
+using Popcorn.ViewModels.Pages.Home.Show.Download;
+using System.Diagnostics;
 using System.Threading;
 
 namespace Popcorn.ViewModels.Pages.Home.Show.Details

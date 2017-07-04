@@ -29,7 +29,7 @@ namespace Popcorn.YTVideoProvider
             Func<string, Task<string>> sourceFactory) =>
             GetAllVideosAsync(videoUri, sourceFactory).GetAwaiter().GetResult();
 
-        #endregion
+        #endregion Synchronous wrappers
 
         public async Task<T> GetVideoAsync(string videoUri)
         {
@@ -66,8 +66,8 @@ namespace Popcorn.YTVideoProvider
         {
             var handler = new HttpClientHandler();
 
-            // Be very careful because if any exceptions are 
-            // thrown between here && the HttpClient ctor, 
+            // Be very careful because if any exceptions are
+            // thrown between here && the HttpClient ctor,
             // we may leak resources.
 
             if (handler.SupportsAutomaticDecompression)

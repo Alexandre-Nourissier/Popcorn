@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Messaging.Async;
+using System;
+using System.Threading.Tasks;
 
 namespace Popcorn.Extensions
 {

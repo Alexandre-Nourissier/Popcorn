@@ -1,7 +1,7 @@
-﻿using System;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Models.Bandwidth;
 using Popcorn.Models.Movie;
+using System;
 
 namespace Popcorn.Messaging
 {

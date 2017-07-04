@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.Windows.Media;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.HSB
 {
@@ -17,7 +13,7 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             Brightness = 2
         }
 
-        Color Color(double[] components)
+        private Color Color(double[] components)
         {
             return Color(components[0], components[1], components[2]);
         }
@@ -36,11 +32,11 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             {
                 // the color wheel consists of 6 sectors. Figure out which sector you're in.
                 double sectorPos = hue / 60.0;
-                int sectorNumber = (int) (Math.Floor(sectorPos));
+                int sectorNumber = (int)(Math.Floor(sectorPos));
                 // get the fractional part of the sector
                 double fractionalSector = sectorPos - sectorNumber;
 
-                // calculate values for the three axes of the color. 
+                // calculate values for the three axes of the color.
                 double p = brightness * (1.0 - saturation);
                 double q = brightness * (1.0 - (saturation * fractionalSector));
                 double t = brightness * (1.0 - (saturation * (1 - fractionalSector)));
@@ -53,26 +49,31 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
                         g = t;
                         b = p;
                         break;
+
                     case 1:
                         r = q;
                         g = brightness;
                         b = p;
                         break;
+
                     case 2:
                         r = p;
                         g = brightness;
                         b = t;
                         break;
+
                     case 3:
                         r = p;
                         g = q;
                         b = brightness;
                         break;
+
                     case 4:
                         r = t;
                         g = p;
                         b = brightness;
                         break;
+
                     case 5:
                         r = brightness;
                         g = p;
@@ -81,14 +82,11 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
                 }
             }
 
-
             return System.Windows.Media.Color.FromRgb(
                 Convert.ToByte((r * 255.0)),
                 Convert.ToByte((g * 255.0)),
                 Convert.ToByte((b * 255.0))
             );
-
-
         }
 
         public double HComponent(Color color)
@@ -127,10 +125,9 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             }
         }
 
-
         public Double Component(Color color, EHSBComponent component)
         {
-            return Component(color, (int) component);
+            return Component(color, (int)component);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace Popcorn.Messaging.Async
 {
@@ -8,13 +8,14 @@ namespace Popcorn.Messaging.Async
     /// AsyncMessage Receiver
     /// </summary>
     /// <typeparam name="TMessage"></typeparam>
-    class AsyncMessageReceiver<TMessage> : IDisposable
+    internal class AsyncMessageReceiver<TMessage> : IDisposable
         where TMessage : MessageBase
     {
         private bool _disposed;
         private IMessenger Messenger { get; set; }
         private Func<TMessage, Task<object>> Callback { get; set; }
         private object Token { get; set; }
+
         public AsyncMessageReceiver(IMessenger messenger,
             object token,
             bool receiveDerivedMessagesToo,

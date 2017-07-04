@@ -1,21 +1,20 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Ioc;
+using NLog;
+using Popcorn.Models.Genres;
+using Popcorn.Models.Movie;
+using Popcorn.Models.User;
+using Popcorn.ViewModels.Windows.Settings;
+using Popcorn.YTVideoProvider;
+using RestSharp;
+using System;
+using System.Collections.Async;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using NLog;
-using Popcorn.Models.Movie;
-using RestSharp;
 using TMDbLib.Client;
 using TMDbLib.Objects.Movies;
-using System.Collections.Async;
-using GalaSoft.MvvmLight.Ioc;
-using Popcorn.Models.Genres;
-using Popcorn.Models.Trailer;
-using Popcorn.Models.User;
-using Popcorn.ViewModels.Windows.Settings;
-using Popcorn.YTVideoProvider;
 
 namespace Popcorn.Services.Movies.Movie
 {

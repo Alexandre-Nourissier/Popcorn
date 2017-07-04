@@ -21,7 +21,7 @@ namespace Popcorn.YTVideoProvider.Helpers
             if (start != -1)
             {
                 string temp = source.Substring(start);
-                var uris = temp.Split(new string[] {opening}, StringSplitOptions.RemoveEmptyEntries)
+                var uris = temp.Split(new string[] { opening }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(v => v.Substring(0, v.IndexOf(closing)));
                 return uris;
             }

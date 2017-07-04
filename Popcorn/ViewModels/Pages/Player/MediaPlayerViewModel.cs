@@ -1,21 +1,21 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using NLog;
+using Popcorn.Events;
 using Popcorn.Extensions;
+using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Models.Bandwidth;
-using Popcorn.Services.Application;
-using Popcorn.Utils;
-using System.Collections.Generic;
 using Popcorn.Models.Subtitles;
-using System.Windows.Input;
-using Popcorn.Helpers;
+using Popcorn.Services.Application;
+using Popcorn.Services.Subtitles;
+using Popcorn.Utils;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Popcorn.Services.Subtitles;
-using Popcorn.Events;
+using System.Windows.Input;
 
 namespace Popcorn.ViewModels.Pages.Player
 {

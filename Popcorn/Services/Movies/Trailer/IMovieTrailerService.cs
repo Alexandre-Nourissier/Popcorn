@@ -1,6 +1,6 @@
-﻿using System.Threading;
+﻿using Popcorn.Models.Movie;
+using System.Threading;
 using System.Threading.Tasks;
-using Popcorn.Models.Movie;
 
 namespace Popcorn.Services.Movies.Trailer
 {

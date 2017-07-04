@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using GalaSoft.MvvmLight.Ioc;
+﻿using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using Popcorn.Services.Application;
 using Popcorn.Services.FileServer;
@@ -7,6 +6,7 @@ using Popcorn.Services.Genres;
 using Popcorn.Services.Movies.Movie;
 using Popcorn.Services.Movies.Trailer;
 using Popcorn.Services.Shows.Show;
+using Popcorn.Services.Shows.Trailer;
 using Popcorn.Services.Subtitles;
 using Popcorn.Services.User;
 using Popcorn.ViewModels.Pages.Home;
@@ -16,7 +16,7 @@ using Popcorn.ViewModels.Pages.Home.Show;
 using Popcorn.ViewModels.Pages.Home.Show.Details;
 using Popcorn.ViewModels.Windows;
 using Popcorn.ViewModels.Windows.Settings;
-using Popcorn.Services.Shows.Trailer;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Popcorn.ViewModels
 {
@@ -31,6 +31,7 @@ namespace Popcorn.ViewModels
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             #region Services
+
             var movieService = new MovieService();
             var showService = new ShowService();
             SimpleIoc.Default.Register<IUserService>(() => new UserService(movieService, showService, Utils.Registry.GetMachineGuid()));
@@ -43,7 +44,7 @@ namespace Popcorn.ViewModels
             SimpleIoc.Default.Register<IGenreService, GenreService>();
             SimpleIoc.Default.Register<IFileServerService, FileServerService>();
 
-            #endregion
+            #endregion Services
 
             #region ViewModels
 
@@ -58,7 +59,7 @@ namespace Popcorn.ViewModels
 
             SimpleIoc.Default.Register<ApplicationSettingsViewModel>();
 
-            #endregion
+            #endregion ViewModels
         }
 
         /// <summary>

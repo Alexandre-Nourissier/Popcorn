@@ -44,9 +44,6 @@
             BorderThickness="2"
             SnapsToDevicePixels="True">
 
-
-
-
             <Image
                 Name="imgTransparency"
                 MouseDown="imgTransparency_MouseDown"

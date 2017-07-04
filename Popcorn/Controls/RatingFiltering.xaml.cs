@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Popcorn.Extensions;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Popcorn.Extensions;
 
 namespace Popcorn.Controls
 {
@@ -62,9 +62,9 @@ namespace Popcorn.Controls
             if (rating == null)
                 return;
 
-            var newval = Convert.ToInt32((double) e.NewValue);
+            var newval = Convert.ToInt32((double)e.NewValue);
             newval /= 2;
-            var childs = ((Grid) (rating.Content)).Children;
+            var childs = ((Grid)(rating.Content)).Children;
 
             ToggleButton button;
 

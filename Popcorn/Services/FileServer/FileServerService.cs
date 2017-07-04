@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using EdgeJs;
+﻿using EdgeJs;
 using GalaSoft.MvvmLight.Messaging;
 using NLog;
 using Popcorn.Helpers;
 using Popcorn.Messaging;
 using Popcorn.Utils.Exceptions;
+using System;
+using System.Threading.Tasks;
 
 namespace Popcorn.Services.FileServer
 {
@@ -109,8 +109,8 @@ namespace Popcorn.Services.FileServer
                 }
             ");
 
-            var onError = (Func<object, Task<object>>) OnFileServerError;
-            var result = (Func<object, Task<object>>) await server(new
+            var onError = (Func<object, Task<object>>)OnFileServerError;
+            var result = (Func<object, Task<object>>)await server(new
             {
                 path = filePath,
                 port = port,

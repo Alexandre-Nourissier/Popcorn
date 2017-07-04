@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace Popcorn.ColorPickerControls.Dialogs
 {
-    interface IColorDialog
+    internal interface IColorDialog
     {
         Color SelectedColor { get; set; }
         Color InitialColor { get; set; }
+
         bool? ShowDialog();
     }
 }

@@ -12,14 +12,12 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
             Yellow = 2,
         }
 
-
         #region components
 
         public double CComponent(Color color)
         {
             return 255 - color.R;
         }
-
 
         public Double MComponent(Color color)
         {
@@ -31,7 +29,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
             return 255 - color.B;
         }
 
-
-        #endregion
+        #endregion components
     }
 }

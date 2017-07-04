@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Popcorn.ColorPicker;
+using Popcorn.ColorPickerControls.Dialogs;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Popcorn.ColorPickerControls.Dialogs;
-using Popcorn.ColorPicker;
 
 namespace Popcorn.ColorPickerControls.Chips
 {
@@ -59,14 +59,14 @@ namespace Popcorn.ColorPickerControls.Chips
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ColorChip) d;
-            var color = (Color) e.NewValue;
+            var chip = (ColorChip)d;
+            var color = (Color)e.NewValue;
             chip.OnColorChanged(color);
         }
 
@@ -76,7 +76,7 @@ namespace Popcorn.ColorPickerControls.Chips
             colorRect.Background = Brush;
         }
 
-        #endregion
+        #endregion Color
 
         #region Brush
 
@@ -85,18 +85,18 @@ namespace Popcorn.ColorPickerControls.Chips
 
         public SolidColorBrush Brush
         {
-            get { return (SolidColorBrush) GetValue(BrushProperty); }
+            get { return (SolidColorBrush)GetValue(BrushProperty); }
             set { SetValue(BrushProperty, value); }
         }
 
         private static void OnBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var chip = (ColorChip) d;
-            var brush = (SolidColorBrush) e.NewValue;
+            var chip = (ColorChip)d;
+            var brush = (SolidColorBrush)e.NewValue;
             chip.Color = brush.Color;
         }
 
-        #endregion
+        #endregion Brush
 
         private IColorDialog CreateDialog()
         {
@@ -106,12 +106,15 @@ namespace Popcorn.ColorPickerControls.Chips
                 case EColorDialog.Full:
                     dialog = new ColorPickerFullDialog();
                     break;
+
                 case EColorDialog.FullWithAlpha:
                     dialog = new ColorPickerFullWithAlphaDialog();
                     break;
+
                 case EColorDialog.Standard:
                     dialog = new ColorPickerStandardDialog();
                     break;
+
                 case EColorDialog.StandardWithAlpha:
                     dialog = new ColorPickerStandardWithAlphaDialog();
                     break;
@@ -122,7 +125,7 @@ namespace Popcorn.ColorPickerControls.Chips
         private void ShowDialog()
         {
             var dia = CreateDialog();
-            var initialColor = ((SolidColorBrush) colorRect.Background).Color;
+            var initialColor = ((SolidColorBrush)colorRect.Background).Color;
             dia.InitialColor = initialColor; //set the initial color
             if (dia.ShowDialog() == true)
             {

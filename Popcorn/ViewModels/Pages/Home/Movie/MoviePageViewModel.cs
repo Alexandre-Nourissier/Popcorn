@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Messaging;
@@ -12,6 +9,9 @@ using Popcorn.Services.User;
 using Popcorn.ViewModels.Pages.Home.Genres;
 using Popcorn.ViewModels.Pages.Home.Movie.Search;
 using Popcorn.ViewModels.Pages.Home.Movie.Tabs;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Movie
 {
@@ -104,7 +104,7 @@ namespace Popcorn.ViewModels.Pages.Home.Movie
         }
 
         /// <summary>
-        /// Tab caption 
+        /// Tab caption
         /// </summary>
         public string Caption
         {

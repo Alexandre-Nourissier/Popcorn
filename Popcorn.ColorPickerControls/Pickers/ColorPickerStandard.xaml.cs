@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Popcorn.ColorPicker;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Popcorn.ColorPicker;
 
 namespace Popcorn.ColorPickerControls.Pickers
 {
@@ -12,7 +12,6 @@ namespace Popcorn.ColorPickerControls.Pickers
     /// </summary>
     public partial class ColorPickerStandard : UserControl
     {
-
         public static Type ClassType
         {
             get { return typeof(ColorPickerStandard); }
@@ -28,20 +27,17 @@ namespace Popcorn.ColorPickerControls.Pickers
         [Category("ColorPicker")]
         public Color InitialColor
         {
-            get { return (Color) GetValue(InitialColorProperty); }
+            get { return (Color)GetValue(InitialColorProperty); }
             set { SetValue(InitialColorProperty, value); }
         }
 
-
         private static void OnInitialColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var cpf = (ColorPickerStandard) d;
-            cpf.newCurrent.CurrentColor = (Color) e.NewValue;
-
+            var cpf = (ColorPickerStandard)d;
+            cpf.newCurrent.CurrentColor = (Color)e.NewValue;
         }
 
-
-        #endregion
+        #endregion InitialColor
 
         public event EventHandler<EventArgs<Color>> SelectedColorChanged;
 
@@ -55,25 +51,21 @@ namespace Popcorn.ColorPickerControls.Pickers
         [Category("ColorPicker")]
         public Color SelectedColor
         {
-            get { return (Color) GetValue(SelectedColorProperty); }
+            get { return (Color)GetValue(SelectedColorProperty); }
             set { SetValue(SelectedColorProperty, value); }
         }
 
-
         private static void OnSelectedColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var cpf = (ColorPickerStandard) d;
-            cpf.colorSelector.Color = (Color) e.NewValue;
+            var cpf = (ColorPickerStandard)d;
+            cpf.colorSelector.Color = (Color)e.NewValue;
             if (cpf.SelectedColorChanged != null)
             {
-                cpf.SelectedColorChanged(cpf, new EventArgs<Color>((Color) e.NewValue));
+                cpf.SelectedColorChanged(cpf, new EventArgs<Color>((Color)e.NewValue));
             }
-
         }
 
-
-        #endregion
-
+        #endregion SelectedColor
 
         public ColorPickerStandard()
         {

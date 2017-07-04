@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Popcorn.ColorPicker.ExtensionMethods;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.CMYK
 {
-    class Magenta : ColorComponent
+    internal class Magenta : ColorComponent
     {
         public static CMYKModel sModel = new CMYKModel();
 

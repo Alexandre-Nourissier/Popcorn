@@ -1,13 +1,13 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Messaging;
+using Popcorn.Extensions;
+using Popcorn.Messaging;
+using Popcorn.ViewModels.Windows;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using GalaSoft.MvvmLight.Messaging;
-using Popcorn.Extensions;
-using Popcorn.Messaging;
-using Popcorn.ViewModels.Windows;
 
 namespace Popcorn.Windows
 {
@@ -34,8 +34,8 @@ namespace Popcorn.Windows
                 if (e.Event == DropFileMessage.DropFileEvent.Enter)
                 {
                     BorderThickness = new Thickness(1);
-                    BorderBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#CCE51400");
-                    GlowBrush = (SolidColorBrush) new BrushConverter().ConvertFrom("#CCE51400");
+                    BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#CCE51400");
+                    GlowBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#CCE51400");
                     DoubleAnimation da = new DoubleAnimation
                     {
                         To = 0.5d,

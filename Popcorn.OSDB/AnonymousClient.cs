@@ -1,13 +1,13 @@
-﻿using System;
+﻿using CookComputing.XmlRpc;
+using Popcorn.OSDB.Backend;
+using Popcorn.Utils.Extensions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CookComputing.XmlRpc;
-using Popcorn.OSDB.Backend;
-using Popcorn.Utils.Extensions;
 
 namespace Popcorn.OSDB
 {
@@ -52,7 +52,7 @@ namespace Popcorn.OSDB
             var tcs = new TaskCompletionSource<IList<Subtitle>>();
             try
             {
-                var response = Proxy.SearchSubtitles(Token, new[] {request});
+                var response = Proxy.SearchSubtitles(Token, new[] { request });
                 VerifyResponseCode(response);
 
                 var subtitles = new List<Subtitle>();
@@ -61,7 +61,7 @@ namespace Popcorn.OSDB
                 {
                     foreach (var infoObject in subtitlesInfo)
                     {
-                        var subInfo = SimpleObjectMapper.MapToObject<SearchSubtitlesInfo>((XmlRpcStruct) infoObject);
+                        var subInfo = SimpleObjectMapper.MapToObject<SearchSubtitlesInfo>((XmlRpcStruct)infoObject);
                         subtitles.Add(BuildSubtitleObject(subInfo));
                     }
                 }
@@ -113,7 +113,6 @@ namespace Popcorn.OSDB
                 }
 
                 UnZipSubtitleFileToFile(tempZipName, destinationfile);
-
             }
             finally
             {

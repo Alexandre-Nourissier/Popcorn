@@ -42,7 +42,7 @@ namespace Popcorn.YTVideoProvider
             }
         }
 
-        #endregion
+        #endregion IDisposable
 
         #region MakeClient/MakeHandler
 
@@ -60,7 +60,7 @@ namespace Popcorn.YTVideoProvider
             };
         }
 
-        #endregion
+        #endregion MakeClient/MakeHandler
 
         public byte[] GetBytes(Video video) =>
             GetBytesAsync(video).GetAwaiter().GetResult();

@@ -12,7 +12,7 @@ namespace Popcorn.Dialogs
         {
             InitializeComponent();
         }
-        
+
         private void CanGoToPage(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;

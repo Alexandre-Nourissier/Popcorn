@@ -43,7 +43,7 @@ namespace Popcorn.YTVideoProvider
             }
         }
 
-        #endregion
+        #endregion IDisposable
 
         #region MakeClient/MakeHandler
 
@@ -69,7 +69,7 @@ namespace Popcorn.YTVideoProvider
             return new HttpClient(handler);
         }
 
-        #endregion
+        #endregion MakeClient/MakeHandler
 
         #region Synchronous wrappers
 
@@ -85,11 +85,11 @@ namespace Popcorn.YTVideoProvider
         public string GetString(string uri) =>
             GetStringAsync(uri).GetAwaiter().GetResult();
 
-        #endregion
+        #endregion Synchronous wrappers
 
         #region HttpClient wrappers
 
-        // TODO: Support other kinds of HTTP requests, 
+        // TODO: Support other kinds of HTTP requests,
         // such as PUT, POST, DELETE, etc.
 
         public Task<HttpResponseMessage> GetAsync(string uri) =>
@@ -104,6 +104,6 @@ namespace Popcorn.YTVideoProvider
         public Task<string> GetStringAsync(string uri) =>
             client.GetStringAsync(uri);
 
-        #endregion
+        #endregion HttpClient wrappers
     }
 }

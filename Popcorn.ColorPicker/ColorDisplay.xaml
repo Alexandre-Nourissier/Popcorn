@@ -30,13 +30,11 @@
                         </GeometryDrawing.Geometry>
                         <GeometryDrawing.Brush>
                             <SolidColorBrush Color="#d7d7d7" />
-
                         </GeometryDrawing.Brush>
                     </GeometryDrawing>
                 </DrawingGroup>
             </DrawingBrush.Drawing>
         </DrawingBrush>
-
     </UserControl.Resources>
     <Grid>
         <Border

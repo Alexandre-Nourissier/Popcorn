@@ -16,7 +16,7 @@ namespace Popcorn.Spinner
             DependencyProperty.Register("SpeedRatio", typeof(double), typeof(LoadingIndicator), new PropertyMetadata(1d,
                 (o, e) =>
                 {
-                    LoadingIndicator li = (LoadingIndicator) o;
+                    LoadingIndicator li = (LoadingIndicator)o;
 
                     if (li.PART_Border == null || li.IsActive == false)
                     {
@@ -31,7 +31,7 @@ namespace Popcorn.Spinner
                             {
                                 if (state.Name == "Active")
                                 {
-                                    state.Storyboard.SetSpeedRatio(li.PART_Border, (double) e.NewValue);
+                                    state.Storyboard.SetSpeedRatio(li.PART_Border, (double)e.NewValue);
                                 }
                             }
                         }
@@ -45,14 +45,14 @@ namespace Popcorn.Spinner
             DependencyProperty.Register("IsActive", typeof(bool), typeof(LoadingIndicator), new PropertyMetadata(true,
                 (o, e) =>
                 {
-                    LoadingIndicator li = (LoadingIndicator) o;
+                    LoadingIndicator li = (LoadingIndicator)o;
 
                     if (li.PART_Border == null)
                     {
                         return;
                     }
 
-                    if ((bool) e.NewValue == false)
+                    if ((bool)e.NewValue == false)
                     {
                         VisualStateManager.GoToElementState(li.PART_Border, "Inactive", false);
                         li.PART_Border.Visibility = Visibility.Collapsed;
@@ -86,7 +86,7 @@ namespace Popcorn.Spinner
         /// </summary>
         public double SpeedRatio
         {
-            get { return (double) GetValue(SpeedRatioProperty); }
+            get { return (double)GetValue(SpeedRatioProperty); }
             set { SetValue(SpeedRatioProperty, value); }
         }
 
@@ -95,7 +95,7 @@ namespace Popcorn.Spinner
         /// </summary>
         public bool IsActive
         {
-            get { return (bool) GetValue(IsActiveProperty); }
+            get { return (bool)GetValue(IsActiveProperty); }
             set { SetValue(IsActiveProperty, value); }
         }
 
@@ -107,7 +107,7 @@ namespace Popcorn.Spinner
         {
             base.OnApplyTemplate();
 
-            PART_Border = (Border) GetTemplateChild("PART_Border");
+            PART_Border = (Border)GetTemplateChild("PART_Border");
 
             if (PART_Border != null)
             {

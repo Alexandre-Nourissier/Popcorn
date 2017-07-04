@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using MahApps.Metro.Controls.Dialogs;
 
 namespace Popcorn.Dialogs
 {
@@ -42,13 +42,13 @@ namespace Popcorn.Dialogs
         /// Message property
         /// </summary>
         public static readonly DependencyProperty MessageProperty = DependencyProperty.Register("Message",
-            typeof (string), typeof (ExceptionDialog), new PropertyMetadata(default(string)));
+            typeof(string), typeof(ExceptionDialog), new PropertyMetadata(default(string)));
 
         /// <summary>
         /// Ok button property
         /// </summary>
         public static readonly DependencyProperty OkButtonTextProperty = DependencyProperty.Register("OkButtonText",
-            typeof (string), typeof (ExceptionDialog), new PropertyMetadata("Ok"));
+            typeof(string), typeof(ExceptionDialog), new PropertyMetadata("Ok"));
 
         /// <summary>
         /// Initialize a new instance of ExceptionDialog
@@ -66,7 +66,7 @@ namespace Popcorn.Dialogs
         /// </summary>
         public string Message
         {
-            get => (string) GetValue(MessageProperty);
+            get => (string)GetValue(MessageProperty);
             set => SetValue(MessageProperty, value);
         }
 
@@ -75,7 +75,7 @@ namespace Popcorn.Dialogs
         /// </summary>
         public string OkButtonText
         {
-            get => (string) GetValue(OkButtonTextProperty);
+            get => (string)GetValue(OkButtonTextProperty);
             set => SetValue(OkButtonTextProperty, value);
         }
 
@@ -155,9 +155,11 @@ namespace Popcorn.Dialogs
                 case MetroDialogColorScheme.Accented:
                     PART_OkButton.Style = FindResource("AccentedDialogHighlightedSquareButton") as Style;
                     break;
+
                 case MetroDialogColorScheme.Theme:
                 case MetroDialogColorScheme.Inverted:
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }

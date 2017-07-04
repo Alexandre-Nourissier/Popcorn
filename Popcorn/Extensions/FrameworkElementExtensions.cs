@@ -114,12 +114,12 @@ namespace Popcorn.Extensions
                 {
                     var frameworkElement = child as FrameworkElement;
                     if (frameworkElement == null || frameworkElement.Name != childName) continue;
-                    foundChild = (T) child;
+                    foundChild = (T)child;
                     break;
                 }
                 else
                 {
-                    foundChild = (T) child;
+                    foundChild = (T)child;
                     break;
                 }
             }

@@ -1,6 +1,6 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using Popcorn.Utils;
+using System;
 
 namespace Popcorn.Services.Application
 {
@@ -62,7 +62,7 @@ namespace Popcorn.Services.Application
         /// Prevent Windows from sleeping
         /// </summary>
         /// <summary>
-        /// Prevent screensaver, display dimming and power saving. This function wraps PInvokes on Win32 API. 
+        /// Prevent screensaver, display dimming and power saving. This function wraps PInvokes on Win32 API.
         /// </summary>
         /// <param name="enableConstantDisplayAndPower">True to get a constant display and power - False to clear the settings</param>
         public void EnableConstantDisplayAndPower(bool enableConstantDisplayAndPower)

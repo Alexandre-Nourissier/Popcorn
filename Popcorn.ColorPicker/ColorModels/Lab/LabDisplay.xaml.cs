@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Popcorn.ColorPicker.ColorModels.Lab
 {
@@ -60,14 +53,14 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
         [Category("ColorPicker")]
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var color = (Color) e.NewValue;
-            var display = (LabDisplay) d;
+            var color = (Color)e.NewValue;
+            var display = (LabDisplay)d;
             display.OnColorChanged(color);
         }
 
@@ -85,10 +78,9 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             }
         }
 
-        #endregion
+        #endregion Color
 
         public event EventHandler<EventArgs<Color>> ColorChanged;
-
 
         #region NormalComponent
 
@@ -100,7 +92,7 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
         [Category("ColorPicker")]
         public NormalComponent NormalComponent
         {
-            get { return (NormalComponent) GetValue(NormalComponentProperty); }
+            get { return (NormalComponent)GetValue(NormalComponentProperty); }
             set { SetValue(NormalComponentProperty, value); }
         }
 
@@ -108,8 +100,8 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
         {
             try
             {
-                var cp = (NormalComponent) e.NewValue;
-                var rd = (LabDisplay) d;
+                var cp = (NormalComponent)e.NewValue;
+                var rd = (LabDisplay)d;
                 rd.OnColorComponentChanged(cp);
             }
             catch
@@ -117,11 +109,10 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             }
         }
 
-        #endregion
+        #endregion NormalComponent
 
         private void OnColorComponentChanged(NormalComponent colorPlaneColorComponent)
         {
-
             if (colorPlaneColorComponent.Name == "LAB_Lightness")
             {
                 rL.IsChecked = true;
@@ -141,12 +132,11 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
                 rB.IsChecked = false;
             }
         }
-        
+
         private void txtR_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = NumbersOnly(e.Text);
             base.OnPreviewTextInput(e);
-
         }
 
         private bool NumbersOnly(string text)
@@ -154,7 +144,6 @@ namespace Popcorn.ColorPicker.ColorModels.Lab
             String okChars = "0123456789";
             return text.ToCharArray().All(c => okChars.IndexOf(c) == -1);
         }
-
 
         private void TextChanged(object sender, TextChangedEventArgs e)
         {

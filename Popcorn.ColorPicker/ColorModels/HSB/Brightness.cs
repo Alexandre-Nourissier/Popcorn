@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Popcorn.ColorPicker.ColorModels.HSB
 {
-    class Brightness : NormalComponent
+    internal class Brightness : NormalComponent
     {
         private static readonly HSBModel sModel = new HSBModel();
 
@@ -28,25 +25,23 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             {
                 bitmap.Lock();
                 int currentPixel = -1;
-                byte* pStart = (byte*) (void*) bitmap.BackBuffer;
-                double iRowUnit = (double) 1 / 256;
+                byte* pStart = (byte*)(void*)bitmap.BackBuffer;
+                double iRowUnit = (double)1 / 256;
                 double iRowCurrent = 1;
                 double hue = sModel.HComponent(color);
                 double saturation = sModel.SComponent(color);
                 for (int iRow = 0; iRow < bitmap.PixelHeight; iRow++)
                 {
-
                     Color hueColor = sModel.Color(hue, saturation, iRowCurrent);
                     for (int iCol = 0; iCol < bitmap.PixelWidth; iCol++)
                     {
                         currentPixel++;
                         *(pStart + currentPixel * 3 + 0) = hueColor.B; //Blue
-                        *(pStart + currentPixel * 3 + 1) = hueColor.G; //Green 
+                        *(pStart + currentPixel * 3 + 1) = hueColor.G; //Green
                         *(pStart + currentPixel * 3 + 2) = hueColor.R; //red
                     }
 
                     iRowCurrent -= iRowUnit;
-
                 }
 
                 bitmap.AddDirtyRect(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
@@ -59,16 +54,16 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
             unsafe
             {
                 bitmap.Lock();
-                byte* pStart = (byte*) (void*) bitmap.BackBuffer;
+                byte* pStart = (byte*)(void*)bitmap.BackBuffer;
                 int currentPixel = -1;
-                double iRowUnit = (double) 1 / 256;
-                double iColUnit = (double) 360 / 256;
+                double iRowUnit = (double)1 / 256;
+                double iColUnit = (double)360 / 256;
                 double iRowCurrent = 1;
 
                 double r = 0;
                 double g = 0;
                 double b = 0;
-                double brightness = (double) (normalComponentValue) / 100;
+                double brightness = (double)(normalComponentValue) / 100;
                 for (int iRow = 0; iRow < bitmap.PixelHeight; iRow++)
                 {
                     double iColCurrent = 359;
@@ -78,8 +73,6 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
                         double saturation = iRowCurrent;
                         //Taken from HSBModel for speed purposes
 
-
-
                         if (saturation == 0)
                         {
                             r = g = b = brightness;
@@ -88,11 +81,11 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
                         {
                             // the color wheel consists of 6 sectors. Figure out which sector you're in.
                             double sectorPos = hue / 60.0;
-                            int sectorNumber = (int) (Math.Floor(sectorPos));
+                            int sectorNumber = (int)(Math.Floor(sectorPos));
                             // get the fractional part of the sector
                             double fractionalSector = sectorPos - sectorNumber;
 
-                            // calculate values for the three axes of the color. 
+                            // calculate values for the three axes of the color.
                             double p = brightness * (1.0 - saturation);
                             double q = brightness * (1.0 - (saturation * fractionalSector));
                             double t = brightness * (1.0 - (saturation * (1 - fractionalSector)));
@@ -105,26 +98,31 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
                                     g = t;
                                     b = p;
                                     break;
+
                                 case 1:
                                     r = q;
                                     g = brightness;
                                     b = p;
                                     break;
+
                                 case 2:
                                     r = p;
                                     g = brightness;
                                     b = t;
                                     break;
+
                                 case 3:
                                     r = p;
                                     g = q;
                                     b = brightness;
                                     break;
+
                                 case 4:
                                     r = t;
                                     g = p;
                                     b = brightness;
                                     break;
+
                                 case 5:
                                     r = brightness;
                                     g = p;
@@ -133,10 +131,9 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
                             }
                         }
 
-
                         currentPixel++;
                         *(pStart + currentPixel * 3 + 0) = Convert.ToByte(g * 255); //Blue
-                        *(pStart + currentPixel * 3 + 1) = Convert.ToByte(b * 255); //Green 
+                        *(pStart + currentPixel * 3 + 1) = Convert.ToByte(b * 255); //Green
                         *(pStart + currentPixel * 3 + 2) = Convert.ToByte(r * 255); //red
                         iColCurrent -= iColUnit;
                     }
@@ -150,8 +147,8 @@ namespace Popcorn.ColorPicker.ColorModels.HSB
         public override Color ColorAtPoint(Point selectionPoint, int colorComponentValue)
         {
             var hue = (359 * selectionPoint.X / 255);
-            var brightness = (double) colorComponentValue / 100;
-            var saturation = (1 - (double) selectionPoint.Y / 255);
+            var brightness = (double)colorComponentValue / 100;
+            var saturation = (1 - (double)selectionPoint.Y / 255);
             return sModel.Color(hue, saturation, brightness);
         }
 

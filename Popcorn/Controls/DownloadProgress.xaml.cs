@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows;
-using Popcorn.Helpers;
+﻿using Popcorn.Helpers;
 using Popcorn.Utils;
+using System;
+using System.Windows;
 
 namespace Popcorn.Controls
 {
@@ -57,7 +57,7 @@ namespace Popcorn.Controls
         /// </summary>
         public double Progress
         {
-            private get { return (double) GetValue(ProgressProperty); }
+            private get { return (double)GetValue(ProgressProperty); }
             set { SetValue(ProgressProperty, value); }
         }
 
@@ -66,7 +66,7 @@ namespace Popcorn.Controls
         /// </summary>
         public double Rate
         {
-            private get { return (double) GetValue(RateProperty); }
+            private get { return (double)GetValue(RateProperty); }
             set { SetValue(RateProperty, value); }
         }
 
@@ -75,7 +75,7 @@ namespace Popcorn.Controls
         /// </summary>
         public string Title
         {
-            private get { return (string) GetValue(TitleProperty); }
+            private get { return (string)GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }
         }
 
@@ -84,7 +84,7 @@ namespace Popcorn.Controls
         /// </summary>
         public MediaType Type
         {
-            private get { return (MediaType) GetValue(TypeProperty); }
+            private get { return (MediaType)GetValue(TypeProperty); }
             set { SetValue(TypeProperty, value); }
         }
 

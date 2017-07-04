@@ -1,7 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Popcorn.Messaging;
@@ -12,6 +9,9 @@ using Popcorn.Services.User;
 using Popcorn.ViewModels.Pages.Home.Genres;
 using Popcorn.ViewModels.Pages.Home.Show.Search;
 using Popcorn.ViewModels.Pages.Home.Show.Tabs;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Show
 {
@@ -232,7 +232,7 @@ namespace Popcorn.ViewModels.Pages.Home.Show
         }
 
         /// <summary>
-        /// Tab caption 
+        /// Tab caption
         /// </summary>
         public string Caption
         {
@@ -286,7 +286,6 @@ namespace Popcorn.ViewModels.Pages.Home.Show
                 }
                 else
                 {
-
                     Tabs.Add(new SearchShowTabViewModel(ApplicationService, ShowService, UserService));
                     SelectedTab = Tabs.Last();
                     var searchShowTab = SelectedTab as SearchShowTabViewModel;

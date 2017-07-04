@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace Popcorn.AttachedProperties
@@ -26,24 +21,24 @@ namespace Popcorn.AttachedProperties
 
         public static bool GetClipToBounds(DependencyObject element)
         {
-            return (bool) element.GetValue(ClipToBoundsProperty);
+            return (bool)element.GetValue(ClipToBoundsProperty);
         }
 
-        #endregion
+        #endregion ClipToBound
 
         #region StayOnCenter
 
         /// <summary>
-        /// Set to <c>true</c> to cause the ripple to originate from the centre of the 
-        /// content.  Otherwise the effect will originate from the mouse down position.        
+        /// Set to <c>true</c> to cause the ripple to originate from the centre of the
+        /// content.  Otherwise the effect will originate from the mouse down position.
         /// </summary>
         public static readonly DependencyProperty IsCenteredProperty = DependencyProperty.RegisterAttached(
             "IsCentered", typeof(bool), typeof(RippleAssist),
             new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Set to <c>true</c> to cause the ripple to originate from the centre of the 
-        /// content.  Otherwise the effect will originate from the mouse down position.        
+        /// Set to <c>true</c> to cause the ripple to originate from the centre of the
+        /// content.  Otherwise the effect will originate from the mouse down position.
         /// </summary>
         /// <param name="element"></param>
         /// <param name="value"></param>
@@ -53,18 +48,18 @@ namespace Popcorn.AttachedProperties
         }
 
         /// <summary>
-        /// Set to <c>true</c> to cause the ripple to originate from the centre of the 
-        /// content.  Otherwise the effect will originate from the mouse down position.        
+        /// Set to <c>true</c> to cause the ripple to originate from the centre of the
+        /// content.  Otherwise the effect will originate from the mouse down position.
         /// </summary>
-        /// <param name="element"></param>        
+        /// <param name="element"></param>
         public static bool GetIsCentered(DependencyObject element)
         {
-            return (bool) element.GetValue(IsCenteredProperty);
+            return (bool)element.GetValue(IsCenteredProperty);
         }
 
-        #endregion
+        #endregion StayOnCenter
 
-        #region disable 
+        #region disable
 
         /// <summary>
         /// Set to <c>True</c> to disable ripple effect
@@ -86,13 +81,13 @@ namespace Popcorn.AttachedProperties
         /// <summary>
         /// Set to <c>True</c> to disable ripple effect
         /// </summary>
-        /// <param name="element"></param>        
+        /// <param name="element"></param>
         public static bool GetIsDisabled(DependencyObject element)
         {
-            return (bool) element.GetValue(IsDisabledProperty);
+            return (bool)element.GetValue(IsDisabledProperty);
         }
 
-        #endregion
+        #endregion disable
 
         #region RippleSizeMultiplier
 
@@ -107,10 +102,10 @@ namespace Popcorn.AttachedProperties
 
         public static double GetRippleSizeMultiplier(DependencyObject element)
         {
-            return (double) element.GetValue(RippleSizeMultiplierProperty);
+            return (double)element.GetValue(RippleSizeMultiplierProperty);
         }
 
-        #endregion
+        #endregion RippleSizeMultiplier
 
         #region Feedback
 
@@ -126,9 +121,9 @@ namespace Popcorn.AttachedProperties
 
         public static Brush GetFeedback(DependencyObject element)
         {
-            return (Brush) element.GetValue(FeedbackProperty);
+            return (Brush)element.GetValue(FeedbackProperty);
         }
 
-        #endregion
+        #endregion Feedback
     }
 }

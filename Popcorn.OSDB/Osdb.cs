@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using CookComputing.XmlRpc;
+﻿using CookComputing.XmlRpc;
 using Popcorn.OSDB.Backend;
+using System.Globalization;
 
 namespace Popcorn.OSDB
 {

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight;
-using Newtonsoft.Json;
+﻿using GalaSoft.MvvmLight;
 using Popcorn.Models.Episode;
 using Popcorn.Models.Image;
 using Popcorn.Models.Rating;
 using RestSharp.Deserializers;
+using System.Collections.Generic;
 
 namespace Popcorn.Models.Shows
 {

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Popcorn.ColorPicker.ExtensionMethods;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.CMYK
 {
-    class Cyan : ColorComponent
+    internal class Cyan : ColorComponent
     {
         public static CMYKModel sModel = new CMYKModel();
 
@@ -19,7 +15,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMYK
         {
             get { return 100; }
         }
-
 
         public override int Value(System.Windows.Media.Color color)
         {

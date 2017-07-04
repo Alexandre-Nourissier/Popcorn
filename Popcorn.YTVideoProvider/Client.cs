@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Popcorn.YTVideoProvider.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Popcorn.YTVideoProvider.Helpers;
 
 namespace Popcorn.YTVideoProvider
 {
@@ -56,7 +56,7 @@ namespace Popcorn.YTVideoProvider
             }
         }
 
-        #endregion
+        #endregion IDisposable
 
         public T GetVideo(string videoUri) =>
             baseService.GetVideo(videoUri, SourceFactory);

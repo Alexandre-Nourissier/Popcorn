@@ -33,7 +33,7 @@ namespace Popcorn.AttachedProperties
 
         public static string GetText(DependencyObject element)
         {
-            return (string) element.GetValue(TextProperty);
+            return (string)element.GetValue(TextProperty);
         }
     }
 }

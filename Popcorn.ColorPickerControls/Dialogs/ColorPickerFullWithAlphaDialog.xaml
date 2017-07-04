@@ -42,6 +42,5 @@
                 Click="btCancel_Click"
                 Content="Cancel" />
         </StackPanel>
-
     </Grid>
 </Window>

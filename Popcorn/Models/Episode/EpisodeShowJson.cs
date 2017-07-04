@@ -1,14 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Popcorn.Extensions;
 using Popcorn.Messaging;
+using Popcorn.Models.Media;
 using Popcorn.Models.Subtitles;
 using Popcorn.Models.Torrent.Show;
 using RestSharp.Deserializers;
-using Popcorn.Models.Media;
+using System.Collections.ObjectModel;
 
 namespace Popcorn.Models.Episode
 {
@@ -85,7 +84,7 @@ namespace Popcorn.Models.Episode
             get => _filePath;
             set => Set(ref _filePath, value);
         }
-        
+
         public TorrentShowJson SelectedTorrent
         {
             get => _selectedTorrent;

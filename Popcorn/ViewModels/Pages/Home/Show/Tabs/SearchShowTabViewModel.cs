@@ -1,8 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Messaging;
+﻿using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using NuGet;
 using Popcorn.Helpers;
@@ -10,6 +6,10 @@ using Popcorn.Messaging;
 using Popcorn.Services.Application;
 using Popcorn.Services.Shows.Show;
 using Popcorn.Services.User;
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Popcorn.ViewModels.Pages.Home.Show.Tabs
 {

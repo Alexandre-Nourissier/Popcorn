@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows.Threading;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
@@ -23,6 +14,15 @@ using SharpCaster.Models.ChromecastStatus;
 using SharpCaster.Models.MediaStatus;
 using SharpCaster.Models.Metadata;
 using SharpCaster.Services;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace Popcorn.ViewModels.Dialogs
 {
@@ -77,11 +77,11 @@ namespace Popcorn.ViewModels.Dialogs
             _chromecastService.ChromeCastClient.VolumeChanged += VolumeChanged;
             _chromecastService.ChromeCastClient.MediaStatusChanged += MediaStatusChanged;
             _chromecastService.ChromeCastClient.ConnectedChanged += ConnectedChanged;
-            _secondsTimer = new DispatcherTimer {Interval = TimeSpan.FromSeconds(1)};
+            _secondsTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
             _secondsTimer.Tick += SecondsTimer_Tick;
             DispatcherHelper.CheckBeginInvokeOnUI(async () =>
             {
-               await LoadChromecasts();
+                await LoadChromecasts();
             });
 
             CloseCommand = new RelayCommand(() =>
@@ -166,6 +166,7 @@ namespace Popcorn.ViewModels.Dialogs
                     case PlayerState.Playing:
                         _secondsTimer.Start();
                         break;
+
                     default:
                         _secondsTimer.Stop();
                         break;
@@ -250,7 +251,7 @@ namespace Popcorn.ViewModels.Dialogs
                 };
             }
 
-            var metadata = new GenericMediaMetadata {title = title};
+            var metadata = new GenericMediaMetadata { title = title };
             if (!isRemote)
             {
                 try
@@ -261,7 +262,7 @@ namespace Popcorn.ViewModels.Dialogs
                             message.BodyParts.FirstOrDefault().ContentType.Name, 9000);
                     await _controller.LoadMedia($"http://{LocalIPAddress()}:9000",
                         message.BodyParts.FirstOrDefault().ContentType.Name, metadata, "LIVE",
-                        0D, null, track == null ? null : new[] {track}, new[] {100});
+                        0D, null, track == null ? null : new[] { track }, new[] { 100 });
                 }
                 catch (Exception ex)
                 {
@@ -276,8 +277,8 @@ namespace Popcorn.ViewModels.Dialogs
                 if (track != null)
                 {
                     await _controller.LoadMedia(_mediaPath, "video/mp4", metadata, "BUFFERED", 0D,
-                        null, new[] {track},
-                        new[] {100});
+                        null, new[] { track },
+                        new[] { 100 });
                 }
                 else
                 {
@@ -314,7 +315,7 @@ namespace Popcorn.ViewModels.Dialogs
             try
             {
                 if (Math.Abs(_chromecastService.ChromeCastClient.Volume.level - (newValue / 100)) < 0.01) return;
-                await _controller.SetVolume((float) (newValue / 100));
+                await _controller.SetVolume((float)(newValue / 100));
             }
             catch (Exception)
             {

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Popcorn.ColorPicker.ExtensionMethods;
+using System;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Popcorn.ColorPicker.ExtensionMethods;
 
 namespace Popcorn.ColorPicker.ColorModels.CMY
 {
@@ -53,7 +46,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
             get { return typeof(CMYDisplay); }
         }
 
-
         public string CyanFormat { get; set; }
         public string MagentaFormat { get; set; }
         public string YellowFormat { get; set; }
@@ -66,16 +58,15 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
 
         public EDisplayMode DisplayMode
         {
-            get { return (EDisplayMode) GetValue(DisplayModeProperty); }
+            get { return (EDisplayMode)GetValue(DisplayModeProperty); }
             set { SetValue(DisplayModeProperty, value); }
         }
 
         private static void OnDisplayModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var display = (CMYDisplay) d;
-            var displayMode = (EDisplayMode) e.NewValue;
+            var display = (CMYDisplay)d;
+            var displayMode = (EDisplayMode)e.NewValue;
             display.OnDisplayModeChanged(displayMode);
-
         }
 
         private void OnDisplayModeChanged(EDisplayMode displayMode)
@@ -90,6 +81,7 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
                     m = color => sMagenta.Value(color).ToString();
                     y = color => sYellow.Value(color).ToString();
                     break;
+
                 case EDisplayMode.PercentNoDecimal:
                     txtCUnit.Text = "%";
                     txtMUnit.Text = "%";
@@ -99,12 +91,10 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
                     m = color => sModel.MComponent(color).PercentageOf(255).ToString(MagentaFormat);
                     y = color => sModel.YComponent(color).PercentageOf(255).ToString(YellowFormat);
                     break;
-
             }
         }
 
-
-        #endregion
+        #endregion DisplayMode
 
         #region Color
 
@@ -114,14 +104,14 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
 
         public Color Color
         {
-            get { return (Color) GetValue(ColorProperty); }
+            get { return (Color)GetValue(ColorProperty); }
             set { SetValue(ColorProperty, value); }
         }
 
         private static void OnColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var color = (Color) e.NewValue;
-            var display = (CMYDisplay) d;
+            var color = (Color)e.NewValue;
+            var display = (CMYDisplay)d;
             display.OnColorChanged(color);
         }
 
@@ -131,23 +121,20 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
             txtM.Text = m(color);
             txtY.Text = y(color);
 
-
             if (ColorChanged != null)
             {
                 ColorChanged(this, new EventArgs<Color>(color));
             }
         }
 
-        #endregion
+        #endregion Color
 
         public event EventHandler<EventArgs<Color>> ColorChanged;
-
 
         private void txtR_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = NumbersOnly(e.Text);
             base.OnPreviewTextInput(e);
-
         }
 
         private bool NumbersOnly(string text)
@@ -155,7 +142,6 @@ namespace Popcorn.ColorPicker.ColorModels.CMY
             String okChars = "0123456789";
             return text.ToCharArray().All(c => okChars.IndexOf(c) == -1);
         }
-
 
         private void TextChanged(object sender, TextChangedEventArgs e)
         {
