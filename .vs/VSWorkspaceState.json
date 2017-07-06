@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.nuget",
+    "\\packages",
+    "\\Popcorn.ColorPicker",
+    "\\Popcorn.ColorPickerControls\\Chips",
+    "\\Popcorn.Markdown",
+    "\\Popcorn.OSDB",
+    "\\Screenshots"
+  ],
+  "SelectedNode": "\\.nuget\\NuGet.exe",
+  "PreviewInSolutionExplorer": false
+}
